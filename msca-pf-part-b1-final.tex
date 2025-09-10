@@ -1,0 +1,354 @@
+\documentclass[11pt]{msca-pf}
+% {{{ packages
+
+% better environments
+\usepackage[english]{babel}
+\usepackage{amsmath, amsfonts, amssymb}
+\usepackage{multicol}
+\usepackage[nameinlink, noabbrev]{cleveref}
+\usepackage[shortlabels]{enumitem}
+\usepackage{booktabs}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{graphicx}
+\usepackage{standalone} 
+
+% better typography
+\usepackage[activate={true,nocompatibility}, % activate protrusion and font expansion
+            final,              % enable microtype, use draft to disable
+            tracking=true,
+            factor=1100,        % more protrusion
+            stretch=10,         % smaller values (default 20, 20) to avoid blurring
+            shrink=10]{microtype}
+\SetTracking{encoding={*}, shape=sc}{40}
+
+% }}}
+
+% {{{ formatting
+
+% NOTE: this needs to be kept so that the sections match the template!
+\setcounter{section}{0}
+
+% }}}
+
+% {{{ commands
+
+% add your own fancy commands
+% \NewDocumentCommand \mycmd { m } {\textbf{#1}}
+
+
+
+
+\newcommand{\hcmm}{homotopy comomentum map }
+\newcommand{\hcmms}{homotopy comomentum maps }
+
+\newcommand{\ale}[1]{ \color{blue}{#1} \color{black} }
+
+% }}}
+
+% {{{ title
+
+\title{Part B-1}
+\author{Antonio Michele MITI}
+\date{\today}
+
+% NOTE: update these as necessary
+\mscaidentifier{HORIZON-MSCA-2025-PF-01}
+\mscaproject{GROCOMO-CFT}
+
+% }}}
+
+\begin{document}
+
+\maketitle
+
+
+%==================================================================================%
+%=====  EXCELLENCE ================================================================%
+%==================================================================================%
+\section{Excellence \mscatag{REL-EVA-RE}}
+\label{sc:excellence}
+%==================================================================================%
+
+
+%----------------------------------------------------------------------------------%
+\subsection{Quality and pertinence of the project's research and innovation objectives
+    (and the extent to which they are ambitious, and go beyond the state of the art)
+    }
+\label{ssc:excellence: quality}
+
+This project (\textbf{GROCOMO-CFT}, \emph{GROupoid COvariance and Multilocal Observables in Classical Field Theories on curved backgrounds}) investigates groupoid symmetries in the multisymplectic framework of classical field theory and develops a systematic theory of multilocal observables on curved spacetimes. The acronym highlights the methodological focus on groupoid covariance and the extension from local to multilocal observables, capturing structural aspects of field theories not accessible in strictly local settings.
+
+The proposal aims to construct a geometric framework for the prequantum Standard Model on curved spacetimes, addressing gaps in the geometric treatment of fundamental interactions. Building on advances in multisymplectic geometry, higher gauge theory, and $L_\infty$-algebras, it seeks to provide a unified geometric description of the electroweak interaction and gravitation, to extend prequantization schemes to gauge theories on curved backgrounds, and to analyse the geometric role of the Higgs mechanism. The long-term objective is to bridge finite-dimensional manifold techniques with the infinite-dimensional nature of field theories, clarifying the relation between quantum theory and general relativity.
+
+A central challenge in classical field theory is to establish a covariant canonical formalism that avoids spacetime foliations. Such a framework would enable covariant quantization of relativistic field theories, such as Yang--Mills theory, without restoring covariance post hoc. Since the 1970s, variational principles have motivated the multisymplectic formalism, introduced by Gaw\k{e}dzki \cite{Gawedzki-1972} and Kijowski \cite{Kijowski-1973}, and later developed by Gotay, Isenberg, Marsden, and Montgomery \cite{Gotay-1991, Gimmsy1}. In parallel, the covariant functional (Peierls) approach was introduced in the 1980s by Crnkovic--Witten \cite{Crnkovic-Witten:1987} and Zuckerman \cite{Zuckerman:1987}.
+
+While the covariant functional method has been connected to quantization in perturbative algebraic QFT \cite{Brunetti-Fredenhagen-Verch-2003, Rejzner-2016}, the multisymplectic approach remains incomplete, particularly concerning the algebra of multilocal observables and their quantization. Bridges have been established, such as geometric prequantization in multisymplectic geometry \cite{Helein:2011, Sevestre2021} and the derivation of the Peierls bracket from multisymplectic data \cite{Forger2005, Gieres:2021}. Yet, a comprehensive treatment of observables, including interacting fields, is still missing. The Standard Model on curved spacetimes provides an ideal testbed for such a framework. By combining finite- and infinite-dimensional techniques, the project seeks to clarify the structure of quantum fields and their interactions in curved backgrounds, aiming for a coherent geometric description encompassing both electroweak and gravitational sectors.
+
+\subsubsection*{Structure of the Project}
+
+The project is articulated into three interconnected research lines, corresponding to three Work Packages (WP1–WP3). Each addresses a specific foundational challenge: (i) extending Poincaré symmetries from Minkowski to curved spacetimes via groupoids, (ii) encoding gravitation as a groupoid gauge theory, and (iii) developing multilocal observables in multisymplectic geometry. Together, they form the backbone of the proposed programme, aiming to construct a coherent geometric framework for classical field theories on curved backgrounds. The Candidate Researcher (CR) will rely on established references such as \cite{Hamilton2017,Bleeker2005} for the Standard Model, and on systematic expositions of Lie groupoids and algebroids \cite{Mackenzie2005,MoerdijkMrcun2003,MeinrenkenNotes,Weinstein1996,OlverSGWQ}, which provide the technical background for WP1 and its downstream developments. These training-oriented texts ensure methodological rigour and consistency of definitions and proofs.
+
+\paragraph{WP1 – Poincaré Groupoid on Curved Spacetime}  
+
+\textbf{State-of-the-art.} The Standard Model is usually formulated on Minkowski spacetime using principal bundles with structure group $G$: matter fields are described as sections of associated bundles, while gauge bosons correspond to principal connections \cite{Hamilton2017,Bleeker2005}. On curved spacetimes, however, the absence of global Poincaré invariance prevents a straightforward extension. Recent progress by Costa, Forger and Pêgas \cite{Costa-Forger-Pegas-2018,Costa-Forger-Pegas-2021} reformulates Noether’s theorem for Lie groupoids, generalizing the Poincaré group to curved spacetimes.  
+
+\textbf{Open problems.} The groupoid approach provides a natural language for local symmetries, yet important gaps remain: in particular, the construction of a spin extension of the Poincaré groupoid (to incorporate fermions) and the clarification of covariance under groupoid actions, which lies between global Poincaré invariance and full diffeomorphism invariance.  
+
+\textbf{Goals.} \emph{WP1 will construct the Poincaré groupoid $O(TM,g)\rightrightarrows M$, clarify its relation with jet groupoids ($GL(TM)\cong J^1(\mathrm{Pair}(M))$), and develop its spin extension for matter couplings. Training references such as \cite{Mackenzie2005,MoerdijkMrcun2003,MeinrenkenNotes,Weinstein1996,OlverSGWQ} will be used to ensure solid theoretical foundations for differentiation, representations, and functorial aspects.}
+
+\paragraph{WP2 – Groupoid Gauge Theory of Gravitation}  
+
+\textbf{State-of-the-art.} Gravity can be described in the Palatini and Einstein–Cartan formalisms through tetrads and spin connections, or in teleparallel gravity by means of a flat torsionful connection. Higher gauge approaches, such as Baez–Wise’s treatment of GR as a gauge theory of the Poincaré 2-group \cite{BaezWise2005}, extend this paradigm, but still promote translations to internal symmetries.  
+
+\textbf{Open problems.} A groupoid formulation of gravity that preserves translations as external symmetries remains undeveloped. Defining curvature and torsion for groupoid-valued connections, and relating them consistently to classical GR or teleparallel structures, is an open challenge. Moreover, a spin extension is necessary to include fermions.  
+
+\textbf{Goals.} \emph{WP2 will define connections on the Lie algebroid of the Poincaré groupoid, establish the associated curvature and torsion, and compare the resulting framework with Einstein and teleparallel formalisms. The expected outcome is a coherent gauge-theoretic formulation of gravitation where groupoid geometry ensures covariance while respecting the external nature of spacetime translations.}
+
+\paragraph{WP3 – Multilocal Observables and Higher Structures}  
+
+\textbf{State-of-the-art.} Multisymplectic geometry naturally encodes observables into $L_\infty$-algebras \cite{Rogers2010}, but most treatments are restricted to local quantities. Recent advances, including the work of Frabetti, Kravchenko and Ryvkin \cite{Frabetti2025}, introduced Poisson bundles over unordered configuration spaces, opening a systematic way to treat multilocal observables. Other key contributions include the development of homotopy momentum maps \cite{Callies2016}, their applications to general relativity \cite{Blohmann2023}, and new algebraic embeddings of multisymplectic observables into higher Courant algebroids \cite{Miti2022}.  
+
+\textbf{Open problems.} A complete framework for multilocal observables in curved spacetimes, equivariant under groupoid symmetries, is still missing. In particular, the construction of homotopy comomentum maps for groupoid actions on multilocal observables is an unresolved problem.
+
+\textbf{Goals.} \emph{WP3 will extend multisymplectic geometry to multilocal observables, construct homotopy comomentum maps compatible with groupoid covariance, and validate the framework through explicit case studies (scalar toy models and sectors of the Standard Model). Results will be accompanied by reproducible open-science artefacts, including symbolic notebooks and LaTeX notes.}
+
+
+
+
+\subsubsection*{Advances Beyond the State of the Art and Timeliness}
+
+The project builds directly on a coherent set of recent advances in geometry and mathematical physics that provide, for the first time, the necessary tools to formulate classical field theory on curved spacetimes in a groupoid-covariant framework.  
+Azzali, Boutaïb, Frabetti, and Paycha introduced groupoid-valued connections \cite{Azzali2022}, offering a new language for interaction mediators in gauge theories on curved backgrounds. Costa, Forger, and Pêgas extended Noether’s theorem to Lie groupoids and developed a systematic account of minimal coupling and internal symmetries in this setting \cite{Costa-Forger-Pegas-2018,Costa-Forger-Pegas-2021}.  
+From the multisymplectic side, Rogers showed that $L_\infty$-algebras naturally encode observables \cite{Rogers2010}, a perspective refined by Miti and Zambon, who constructed explicit immersions into higher Courant algebroids \cite{Miti2022}, linking observables to geometric prequantization.  
+Further progress includes Blohmann’s identification of homotopy momentum maps in general relativity \cite{Blohmann2023}, the general theory of such maps by Callies, Frégier, Rogers, and Zambon \cite{Callies2016}, and the construction of Poisson bundles over unordered configuration spaces by Frabetti, Kravchenko, and Ryvkin \cite{Frabetti2025}, which provide the first algebraic setting for multilocal observables.  
+Together, these works, almost all produced in the last decade, establish the relevance and timeliness of developing the GROCOMO-CFT programme, which aims to unify these directions into a single, covariant framework. The CR will rely on systematic references such as \cite{Mackenzie2005,MoerdijkMrcun2003,MeinrenkenNotes,Weinstein1996,OlverSGWQ} to ensure methodological rigour and consolidate the training required to extend these results.
+
+
+\subsubsection*{Quality and Pertinence of Objectives}
+
+The objectives of GROCOMO-CFT are to address long-standing open problems at the intersection of the Standard Model, spacetime covariance, and higher algebra. They are structured in three work packages with measurable deliverables:  
+\textbf{WP1} develops the Poincaré groupoid $O(TM,g)\rightrightarrows M$, including its spin extension, to formalize local symmetries on curved spacetimes;  
+\textbf{WP2} formulates gravitation as a groupoid gauge theory, defining connections on the Lie algebroid of the Poincaré groupoid and comparing the resulting curvature and torsion with Einstein and teleparallel formulations;  
+\textbf{WP3} extends multisymplectic geometry to multilocal observables, introducing homotopy comomentum maps for groupoid actions and validating them on scalar and Standard Model toy models.  
+
+These goals are ambitious because they require bridging advanced techniques in groupoid geometry, higher algebra, and field theory. Yet, they are feasible thanks to the preliminary results already obtained in the Lyon–Dijon–Metz network. The CR and PS are central to this collaboration, ensuring access to expertise and continuity with ongoing research. Each WP is designed with intermediate milestones and clear deliverables (preprints, open repositories), making progress verifiable and achievable within the fellowship timeframe.
+
+
+
+
+%----------------------------------------------------------------------------------%
+\subsection{Soundness of the proposed methodology
+    (including interdisciplinary approaches, consideration of the gender
+    dimension and other diversity aspects, and quality of open science practices) 
+}
+\label{ssc:excellence: methodology}
+
+
+\subsubsection*{Overall methodology}
+The project introduces advanced geometric tools into the study of classical field theories: (i) symmetry groupoids, (ii) connections on groupoids and algebroids, and (iii) momentum maps for groupoid actions. These extend multisymplectic and covariant phase space methods beyond flat spacetimes.  
+
+A central methodological step is to replace the standard Poincaré group with a \emph{Poincaré groupoid}, naturally adapted to curved backgrounds. This allows conservation laws to be formulated covariantly, while recovering the classical Poincaré group in the flat limit.  
+
+The implementation is incremental and aligned with the Work Packages: \\ 
+- WP1 develops the formal theory of groupoids and algebroids (existence theorems, spin extensions).\\  
+- WP2 applies this framework to gravitation, defining groupoid-valued connections and testing them on toy models.\\ 
+- WP3 extends the theory to $L_\infty$-structures and multilocal observables, with explicit case studies.  
+
+This layered approach (groupoids $\to$ algebroids $\to$ higher structures) ensures intermediate, publishable results and provides fallback options if some constructions prove too restrictive.  
+
+The main challenges are the mathematical complexity of higher structures and their physical interpretation (e.g.\ the graviton or Higgs sector on curved backgrounds). These will be mitigated through systematic consistency checks (flat-spacetime limits, degree-of-freedom counting, closure of brackets) and by focusing first on simpler models (scalar or Yang–Mills fields). Prototype multisymplectic integrators will support validation.
+
+\subsubsection*{Integration of methods and disciplines}
+The methodology combines differential geometry and higher algebra (groupoids, algebroids, $L_\infty$-algebras), mathematical physics (multisymplectic geometry, Noether theorems, covariant phase space), and computational tools (symbolic algebra, integrators). Theoretical developments in WP2 and WP3 will be cross-validated on explicit models through numerical schemes. The CR will benefit from collaborations with colleagues in Lyon (e.g.\ Frabetti, Ryvkin, Kravchenko) and ongoing joint initiatives such as the Lyon–Dijon–Metz mathematical physics network, ensuring an interdisciplinary and collaborative framework.
+
+\subsubsection*{Gender dimension and other diversity aspects}
+Although not directly related to the scientific content, inclusiveness will be pursued through balanced participation in seminars and co-authorship, and by enabling hybrid formats to support researchers with care responsibilities.
+
+\subsubsection*{Open science practices}
+All results will be openly disseminated. Preprints will be posted on arXiv or HAL; journal submissions will comply with open-access requirements. Code, notebooks, and symbolic computations will be hosted in public repositories (GitHub/GitLab), with version control and DOIs via Zenodo. Reproducibility will be supported through lightweight packages (containers or Conda environments). A public repository will be available by Month~6, with full reproducibility packages by Month~18. 
+
+
+
+
+%----------------------------------------------------------------------------------%
+\subsection{Quality of the supervision, training and the two-way transfer of
+    knowledge between the researcher and the host}
+\label{ssc:excellence: supervision}
+
+
+\subsubsection*{Supervisor’s Excellence and Qualifications}
+The fellowship will be supervised by \textbf{Prof.~Alessandra Frabetti} (hereafter \textbf{PS}), Full Professor of Mathematics at Université Lyon 1 (ICJ). The PS is an internationally recognized expert in algebraic and geometrical methods for quantum field theory, including renormalization Hopf algebras, groupoids, and Poisson bundles. She has authored more than 15 peer-reviewed publications and several preprints, with over 1,500 citations (h-index 14), and is frequently invited to international conferences in mathematical physics.
+
+Her leadership roles include membership in national scientific committees (French National University Council 2003–2010, ANR 2014–2016, INSMI 2019–2023) and local university governance (Mathematics Department Council, ICJ scientific committee, direction of the first-year curriculum 2021–2023). She also serves on international hiring committees in mathematical physics. This combination of research excellence and governance ensures that the Candidate Researcher (CR) will be hosted in a well-structured training environment.
+
+The PS has successfully supervised PhD students and postdoctoral researchers who continued into academic careers, confirming her mentorship strength. Her expertise and availability provide a solid basis for guiding the CR in achieving the scientific and professional goals of this fellowship.
+
+\subsubsection*{Collaborative Environment and Expertise}
+The Mathematical Physics group at ICJ is a dynamic hub in algebraic and geometric methods for quantum field theory. Recent contributions by the PS, Ryvkin, and Kravchenko form the basis of this proposal. The group has recently expanded, adding new faculty and doctoral students, and strengthening ties with INSA Lyon and the Physics Department. This environment fosters interdisciplinary work combining geometry, algebra, and physics.
+
+The CR has a long-standing collaboration with this group, including joint publications with Ryvkin and co-organization of advanced courses. He is currently co-supervised by the PS in a CIVIS-3i MSCA Cofund fellowship and has contributed to the Labex MiLyon “Higher Structures in Differential Geometry” and the ANR “GeoQFT” initiative. Overall, the CR has spent more than six months at ICJ across three visits, during which he organized workshops, seminars, and participated in working groups. These activities demonstrate his established integration into the host network.
+
+\subsubsection*{Planned Training Activities}
+The fellowship includes a structured training programme to strengthen both scientific and transferable skills:
+\begin{itemize}[noitemsep,topsep=0pt]
+    \item \textbf{Scientific training:} regular participation in ICJ seminars and reading groups on higher structures and mathematical physics; attendance at international workshops; collaboration with colleagues at INSA Lyon and the Physics Department.
+    \item \textbf{Management and organisation:} involvement in organizing seminars, workshops, and collaborative meetings; training in project management and scientific reporting through ICJ’s doctoral school.
+    \item \textbf{Transferable skills:} teaching opportunities and co-supervision of MSc/BSc students; participation in university-level courses on communication, grant writing, open science, leadership, and career development.
+\end{itemize}
+
+\subsubsection*{Two-Way Knowledge Transfer}
+\textbf{From host to CR:} The ICJ group offers expertise in operads, deformation quantization, graded geometry, and higher algebraic structures. Combined with the PS’s international collaborations, this environment will broaden the CR’s methodological toolkit, professional skills, and research network.
+
+\textbf{From CR to host:} The CR contributes expertise in multisymplectic geometry, observable reduction, and homological methods in symmetries, complementing the ICJ group’s algebraic focus. Knowledge transfer will take place through seminars, co-authored publications, and student mentoring, providing long-term added value to the ICJ research community.
+
+
+
+%----------------------------------------------------------------------------------%
+\subsection{Quality and appropriateness of the researcher's professional
+    experience, competences and skills}
+\label{ssc:excellence: researcher}
+
+The Candidate Researcher (CR) is a differential geometer with a strong background in mathematical physics, working primarily on symplectic and multisymplectic geometry, $L_\infty$-algebras, and higher structures. His research bridges geometry and physics to address foundational questions in field theory. Over more than four years of postdoctoral work, the CR has developed advanced expertise in higher homotopical algebra, motivated by multisymplectic methods.
+
+The CR obtained a dual PhD from KU Leuven (Belgium) and Università Cattolica del Sacro Cuore (Italy), with a thesis on homotopy comomentum maps in multisymplectic geometry. This work produced original results on $L_\infty$-algebras of observables, comomentum maps for diffeomorphism groups, and higher embeddings of multisymplectic algebras, with applications ranging from hydrodynamical models to knot invariants. These contributions have been published in peer-reviewed journals and presented at international conferences.
+
+Following the PhD, the CR was awarded five competitive research grants and held postdoctoral positions at the Max Planck Institute for Mathematics (Bonn, 2021–2022), Università Cattolica (Brescia, 2022–2024), and Sapienza University of Rome (CIVIS-3i MSCA Cofund, 2024–2026). These appointments at internationally recognised institutions confirm his ability to succeed in competitive environments.
+
+His subsequent research has further advanced multisymplectic geometry and its applications to classical field theory, with contributions to reduction theory, the geometry of the energy–momentum tensor, constraint algebras, and algebraic frameworks for observables. He has also explored interdisciplinary directions, including quantum algorithms for modular arithmetic. The impact of this work is reflected in a growing publication record across high-quality venues and through collaborations with leading experts in geometry and mathematical physics.
+
+The CR has actively contributed to the scientific community by co-organising international workshops (e.g.\ “Multisymplectic Structures in Geometry and Physics”, Lyon 2024) and delivering advanced mini-courses (e.g.\ on symplectic observables at Salerno 2024). These experiences demonstrate strong communication skills and capacity for community building.  
+
+Before fully committing to academia, the CR worked in the IT sector as a Java programmer and system administrator, acquiring advanced skills in programming and scientific computing. He is proficient in C++, Python, Haskell, CUDA, and Linux system administration, which complement his mathematical expertise and are valuable for computational modelling and the development of multisymplectic integrators.
+
+Taken together, the CR’s training in theoretical physics, expertise in advanced geometry, international research experience, and computational skills make him well-prepared to carry out the ambitious goals of this fellowship.
+
+
+%==================================================================================%
+%=====    IMPACT   ================================================================%
+%==================================================================================%
+\section{Impact \mscatag{IMP-ACT-IA}}
+\label{sc:impact}
+
+
+%----------------------------------------------------------------------------------%
+\subsection{Career development and skills enhancement}
+\label{ssc:impact: career}
+
+The fellowship will consolidate the Candidate Researcher’s (CR) independence and prepare the transition toward a Principal Investigator role. Leading day-to-day research, supervising students, and organising seminars will strengthen leadership and mentoring skills. Work across geometry, mathematical physics, and computation expands expertise, while integration at ICJ Lyon embeds the CR in an international network. Training in groupoids, algebroids, and connections will broaden technical competences; modules on project management and open science will enhance transferable skills. Publications in high-level journals and talks at major conferences will raise visibility, while outreach activities will consolidate communication abilities. The host and PS will support applications for follow-up funding and faculty positions, ensuring continuity beyond the fellowship.  
+
+The fellowship builds directly on the CIVIS-3i MSCA Cofund, which provided mobility and first steps toward independence. GROCOMO-CFT deepens these achievements through long-term integration at ICJ, a structured training plan, and sustained co-supervision, creating the basis for future competitive applications such as an ERC Starting Grant.  
+
+
+%----------------------------------------------------------------------------------%
+\subsection{Dissemination, exploitation and communication}
+\label{ssc:impact: outcomes}
+
+The project will deliver a framework for covariant field theory on curved spacetimes via groupoid symmetries. Dissemination and communication will start from Month~1 and continue throughout. Core results will be submitted to journals such as \emph{Communications in Mathematical Physics}, \emph{Journal of Geometry and Physics}, and \emph{Differential Geometry and its Applications}, with preprints on arXiv. Presentations are planned at major international conferences (Poisson, GAP, IFWGP) and at ICJ seminars, fall schools, and national working groups.  
+
+All outputs—including preprints, notes, code, and computational notebooks—will be released in public repositories, archived with DOIs, and accompanied by reproducibility packages following FAIR principles. Communication will focus on the role of symmetry and covariance in physics, using a project website, academic social media, and outreach events such as Researchers’ Night and bilingual seminars in Lyon. Repositories and websites will remain online beyond the fellowship, ensuring sustainability and integration into future teaching and follow-up proposals.  
+
+Exploitation will be academic: open access and open source maximise reusability in research and teaching, with no patentable results expected.
+
+
+%==================================================================================%
+%=====    QUALITY   ===============================================================%
+%==================================================================================%
+\section{Quality and Efficiency of the Implementation
+         \mscatag{QUA-LIT-QL} \mscatag{WRK-PLA-WP} \mscatag{CON-SOR-CS} \mscatag{PRJ-MGT-PM}}
+\label{sc:implementation}
+
+\subsection{Work plan and risk management} \label{ssc:implementation:workplan}
+%
+The project spans 24 months and is structured into three Work Packages (WPs):  
+\emph{WP1: Poincaré Groupoid on Curved Spacetime},  
+\emph{WP2: Groupoid Gauge Theory of Gravitation}, and  
+\emph{WP3: Multilocal Observables and Higher Structures}.  
+Each WP contains 2–3 technical tasks, an internal milestone to verify progress, and at least one deliverable in the form of a preprint or technical report. Tasks are scheduled with partial overlaps to balance workload and mitigate delays.
+ 
+% ========================= GANTT =========================
+The Gantt chart in Fig.~\ref{fig:gantt} summarises the timeline of WPs, tasks, milestones, and deliverables, over Months M1–M24.  
+
+\begin{figure}[htbp]
+  \centering
+  \includestandalone[mode=buildnew, width=\linewidth]{Pics/gantt}
+  \caption{Project timeline (Months M1–M24).}
+  \label{fig:gantt}
+\end{figure}
+
+
+% ========================= WP1 =========================
+\subsubsection*{WP1 — Poincaré Groupoid on Curved Spacetime (M1–M12)}
+\textbf{Goal.} To formalise local spacetime symmetries using Lie groupoids, construct the Poincaré groupoid $O(TM,g)\rightrightarrows M$ and its spin extension, and clarify the relation $GL(TM)\cong J^1(\mathrm{Pair}(M))$ relevant to observer transformations and covariance.  
+
+\textbf{Tasks.}  
+T1.1 (M1–M6): establish the structure of pair and frame groupoids, jets, and the orthonormal frame groupoid $O(TM,g)$; fix notation and functorial relations; analyse model spacetimes.  
+T1.2 (M4–M12): build a spin extension suitable for fermions; compare principal groupoid bundles with principal bundles; study compatibility with internal gauge symmetries.  
+
+\textbf{Milestone M1 (M6):} framework validated on constant-curvature prototypes; spin extension criteria formulated.  
+\textbf{Deliverable D1 (M12):} preprint “The Poincaré Groupoid and its Spin Extension on Curved Spacetimes”.  
+
+% ========================= WP2 =========================
+\subsubsection*{WP2 — Groupoid Gauge Theory of Gravitation (M7–M20)}
+\textbf{Goal.} To develop a gauge-theoretic formulation of gravity using the Poincaré groupoid, defining algebroid-valued connections, relating curvature and torsion to tetrads and spin connection, and comparing general relativity with teleparallel models.  
+
+\textbf{Tasks.}  
+T2.1 (M7–M12): define groupoid and algebroid connections, curvatures and torsions; derive Bianchi-type identities and covariance statements.  
+T2.2 (M10–M18): encode tetrad and spin connection as components of a Poincaré-groupoid connection; analyse Einstein vs. teleparallel regimes.  
+T2.3 (M14–M20): test flat and Minkowski limits; compare with higher gauge approaches; apply to scalar and Maxwell fields on curved backgrounds.  
+
+\textbf{Milestone M2 (M18):} consistency checks passed; at least one nontrivial toy model completed.  
+\textbf{Deliverable D2 (M22):} preprint “Gravity as a Groupoid Gauge Theory: Curvature, Torsion, and Covariance”.  
+
+% ========================= WP3 =========================
+\subsubsection*{WP3 — Multilocal Observables and Higher Structures (M15–M24)}
+\textbf{Goal.} To extend multisymplectic geometry to multilocal observables equivariant under groupoid actions, and to construct homotopy comomentum maps on $L_\infty$-algebras of observables.  
+
+\textbf{Tasks.}  
+T3.1 (M15–M20): define multilocal $L_\infty$-algebras, coherence relations and covariance under groupoid actions; relate to generalised Noether theorems.  
+T3.2 (M19–M24): compute explicit homotopy comomentum maps in scalar and Standard Model sectors on curved backgrounds; release reproducible notes and Jupyter notebooks.  
+
+\textbf{Milestone M3 (M20):} multilocal observable algebra completed for at least one model; prototype homotopy comomentum map computed.  
+\textbf{Deliverable D3 (M24):} preprint “Multilocal Observables and Homotopy Comomentum Maps for Groupoid Symmetries” and public repository.  
+
+% ========================= Risk =========================
+\subsubsection*{Risk assessment and mitigation strategy}
+The WPs are conceptually related but technically decoupled, so delays in one will not prevent progress in others. Overlapping tasks provide flexibility for reallocation of effort. The CR has prior expertise in multisymplectic geometry and $L_\infty$-algebras, lowering execution risk. WP3 includes multiple models, ensuring publishable results even in partial cases. Quarterly reviews by the CR and PS will monitor progress and trigger corrective actions if milestones slip. The host and collaborators include experts in groupoids, higher gauge theory, and multisymplectic geometry who can be consulted for troubleshooting.  
+
+
+%----------------------------------------------------------------------------------%
+\subsection{Quality and capacity of the host institution}
+\label{ssc:implementation: host}
+
+The Candidate Researcher (CR) has already been hosted at the Institut Camille Jordan (ICJ, Université Lyon~1) for three research stays of about one month each. During these visits, ICJ provided office space, IT access, and library privileges, confirming its readiness to host the fellowship from the very first day.  
+
+The CR is well integrated into the scientific environment: he has participated in working groups and departmental seminars, co-organised workshops and mini-courses, and given invited talks at ICJ (October 2022, May 2023). Collaboration with Dr.~Leonid Ryvkin has already produced joint publications and ongoing projects, ensuring immediate and productive engagement during the fellowship.  
+
+ICJ offers strong infrastructure and support, including equipped offices, IT services, and an extensive library. Administrative and technical staff are experienced in assisting visiting researchers, while discussions with colleagues such as Dr.~Ryvkin and Prof.~François Gieres have already proven scientifically fruitful.  
+
+The institute is embedded in Lyon’s rich academic ecosystem. The CR has collaborated with INSA Lyon (Dr.~Marco D’Agostino), engaged with the Physics Department, and participated in the Poisson Geometry thematic semester under Labex MiLyon. This inter-institutional setting provides access to seminars, shared facilities, and a broad network of researchers. The fellowship will consolidate these links and strengthen the CR’s integration into the French and European mathematical physics community.  
+
+
+
+
+
+
+
+
+
+
+%#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#%
+% Bibliography (BibTex)
+% https://arxiv.org/hypertex/bibstyles/
+%#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#%
+\footnotesize
+\bibliographystyle{savetrees}
+\bibliography{./biblio}%,./publications}
+%\input{build/Research-Proposal-Online.bbl}
+
+
+
+%==================================================================================%
+\end{document}
+
+% kate: default-dictionary en_GB;

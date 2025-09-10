@@ -1,0 +1,83 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{hyperref}
+\usepackage{geometry}
+\geometry{margin=3cm}
+
+\title{Groupoid Covariance and Multilocal Observables in Classical Field Theories}
+\author{Ale \& Tony}
+\date{}
+
+\begin{document}
+\maketitle
+
+\section*{1 \quad Quality and pertinence of the project’s research and innovation objectives (and the extent to which they are ambitious, and go beyond the state of the art)}
+\label{sec:quality}
+\#@QUA-LIT-QL@#
+
+\paragraph{Introduction.}
+The project \textbf{GROCOMO--CFT (Groupoid Covariance and Multilocal Observables in Classical Field Theories on curved backgrounds)} aims to establish a new mathematical framework for field theories on curved spacetimes. The key innovation is to replace the central role of global groups with \emph{Lie groupoids} and their higher-categorical extensions. This enables a consistent treatment of symmetries, observers, gravitation, and observables in a covariant way. The framework integrates the geometric Standard Model, groupoid-based covariance, teleparallel gravity, and multilocal observables, pushing beyond the state of the art.
+
+\section{Standard Model: Principal Bundles and Classification of Particles}
+
+\paragraph{State of the art.}
+The Standard Model can be reformulated geometrically in terms of principal bundles and connections \cite{Bleeker,Hamilton}. The gauge group (understood as an internal symmetry group) is a Lie group $G$, but the \emph{true} gauge group is the automorphism group of the bundle, 
+$$
+\mathrm{Aut}(P) \;\cong\; Map(M,G).
+$$
+Matter fields are sections of associated vector bundles $E=P\times_G V$, classified via representations of $G$ on the fiber $V$. Gauge bosons correspond to principal connections $A\in \Omega^1(P,\mathfrak{g})$, $\mathfrak{g}=\mathrm{Lie}(G)$, whose curvature $F=dA+\tfrac{1}{2}[A,A]$ encodes the interaction field strength. This classifies particles of matter through group representations and mediators of forces through Lie algebra–valued connections.
+
+\paragraph{Open problems.}
+This geometric model is well-defined on Minkowski spacetime, where the Poincaré group underpins covariance. On curved spacetimes, the absence of global symmetries makes this classification incomplete. The open problem is to extend the bundle-theoretic Standard Model to curved backgrounds, maintaining covariance and integrating spacetime symmetries with internal ones.
+
+\section{From Groups to Groupoids: Local Symmetries and Observers}
+
+\paragraph{State of the art.}
+So far, all constructions rely on Minkowski space. On curved manifolds, global groups are inadequate to encode local symmetries. The natural replacement is \emph{Lie groupoids} \cite{Meinrenken,Mackenzie,CostaForgerPegas,WeinsteinGroupoids}. In General Relativity, observers are inherently local, attached to charts centered at events. The comparison of two observers requires overlap of charts. On Minkowski, every centered chart can be extended globally, but on curved spacetimes comparisons are restricted to intersections.  
+
+The translation of observers can be formalized via the pair groupoid $\mathrm{Pair}(M)$, and comparison of tangent frames requires the frame groupoid $GL(TM)$. Crucially,
+$$
+GL(TM) \;\cong\; J^1 \mathrm{Pair}(M),
+$$
+as shown by Meinrenken (Ex. 1.12). For metric compatibility, one considers the orthogonal frame groupoid $O(TM,g)$ \cite{Meinrenken}. This construction generalizes the global Poincaré group of Minkowski space to a \emph{Poincaré groupoid} adapted to curved spacetimes. Forger and Costa–Forger–Pêgas \cite{CostaForgerPegas} have already analyzed Noether’s theorem in this context, with groupoid momentum maps.
+
+\paragraph{Open problems.}
+A central challenge is to extend this to a spin version: a \emph{spin Poincaré groupoid}, mimicking the passage from $SO(n,1)$ to $\mathrm{Spin}(n,1)$. This is required to accommodate fermionic matter. Another open issue is covariance: in special relativity it is Poincaré invariance, in GR it is full diffeomorphism invariance. We aim at an intermediate notion: covariance with respect to groupoid actions on a fixed background. This captures the local structure of observers while retaining physical covariance.
+
+\section{Gravity and Teleparallel Approaches}
+
+\paragraph{State of the art.}
+Gravitation should, as a force, be treated as a gauge field, i.e.~modeled by a connection on a principal bundle. The tetrad (Palatini formalism, see \cite{WikipediaFrameFields}) provides the dynamical field, soldering the tangent bundle to an internal $\mathbb{R}^4$. The torsion 2-form is
+$$
+T^a = d\theta^a + \phi^a{}_b \wedge \theta^b,
+$$
+with $\theta^a$ the coframe and $\phi^a{}_b$ the spin connection. In teleparallel gravity, the Weitzenböck connection is flat but torsionful:
+$$
+T^a{}_{\mu\nu} = \partial_\mu h^a{}_\nu - \partial_\nu h^a{}_\mu,
+$$
+with vanishing curvature \cite{nLabTeleparallel}. Baez and Wise \cite{BaezWise} formulated GR as a higher gauge theory: the Poincaré 2-group admits 2-connections combining the Lorentz connection and coframe, with torsion interpreted as higher curvature. This shows GR can be treated as a gauge theory of a 2-group.
+
+\paragraph{Open problems.}
+In Baez–Wise, translations are internalized. Our approach instead is to preserve their nonlocal character, by treating Poincaré not as an internal group but as a groupoid. This respects the external nature of translations. The open problem is to model the graviton as a connection valued in the Lie algebroid of the Poincaré groupoid, extending Paycha’s work on groupoid connections \cite{PaychaUnpublished}. This requires developing a groupoid-based theory of curvature, torsion, and moment maps.
+
+\section{Multilocal Observables and Higher Structures}
+
+\paragraph{State of the art.}
+So far the focus has been on background structures. For field theories, the algebra of observables is equally essential. Multisymplectic geometry provides a natural framework: the space of observables forms an $L_\infty$-algebra \cite{RogersLInfinity,CantrijnIbortDeLeon}. However, this description is essentially local. Recent work (Frabetti, unpublished collaborations) has introduced \emph{multilocal observables}, encoding correlations across multiple regions of spacetime. Groupoid symmetries naturally act on such structures, suggesting the definition of \emph{homotopy comomentum maps} for groupoid actions.
+
+\paragraph{Open problems.}
+The open challenge is to establish a complete algebraic framework of multilocal observables on curved spacetimes, governed by groupoid symmetries. This requires extending momentum map theory to homotopy comomentum maps for groupoid actions. Within this framework, gravitation as tetrads becomes a connection on the Lie algebroid of the Poincaré groupoid, and matter fields (fermions) require a spin extension of the Poincaré groupoid. This ambitious construction addresses a fifty-year-old problem: a covariant and geometric formulation of observables in field theory.
+
+\section{Ambition and Beyond the State of the Art}
+
+The project seeks to resolve problems open for over fifty years, combining Standard Model geometry, groupoid covariance, and higher structures. It builds on recent work by Forger, Costa–Forger–Pêgas, Baez–Wise, and Paycha, as well as new developments in multilocal observables. The interdisciplinarity is striking: it requires expertise in particle physics, higher structures, Lie groupoids, and multisymplectic geometry. The objectives go decisively beyond the state of the art.
+
+\section{Feasibility and Realistic Achievability}
+
+These ideas are already being developed through joint work in the Lyon–Dijon–Metz phys-math network. The proponents have coordinated working groups, ensuring that the expertise and collaborations are in place. The project aligns perfectly with the host institution’s activities. While ambitious, the goals are realistically achievable, thanks to partial results and an active collaborative environment.
+
+\bibliographystyle{alpha}
+\bibliography{references}
+
+\end{document}

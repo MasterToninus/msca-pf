@@ -1,0 +1,572 @@
+\documentclass[11pt,draftproposal]{msca-pf}
+% {{{ packages
+
+% better environments
+\usepackage[english]{babel}
+\usepackage{amsmath, amsfonts, amssymb}
+\usepackage{multicol}
+\usepackage[nameinlink, noabbrev]{cleveref}
+\usepackage[shortlabels]{enumitem}
+\usepackage{booktabs}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{graphicx}
+\usepackage{standalone} 
+
+% better typography
+\usepackage[activate={true,nocompatibility}, % activate protrusion and font expansion
+            final,              % enable microtype, use draft to disable
+            tracking=true,
+            factor=1100,        % more protrusion
+            stretch=10,         % smaller values (default 20, 20) to avoid blurring
+            shrink=10]{microtype}
+\SetTracking{encoding={*}, shape=sc}{40}
+
+% }}}
+
+% {{{ formatting
+
+% NOTE: this needs to be kept so that the sections match the template!
+\setcounter{section}{0}
+
+% }}}
+
+% {{{ commands
+
+% add your own fancy commands
+% \NewDocumentCommand \mycmd { m } {\textbf{#1}}
+
+
+
+
+\newcommand{\hcmm}{homotopy comomentum map }
+\newcommand{\hcmms}{homotopy comomentum maps }
+
+\newcommand{\ale}[1]{ \color{blue}{#1} \color{black} }
+
+% }}}
+
+% {{{ title
+
+\title{Part B-1}
+\author{Antonio Michele MITI}
+\date{\today}
+
+% NOTE: update these as necessary
+\mscaidentifier{HORIZON-MSCA-2025-PF-01}
+\mscaproject{GROCOMO-CFT}
+
+% }}}
+
+\begin{document}
+
+\maketitle
+
+%==================================================================================%
+%=====  EXCELLENCE ================================================================%
+%==================================================================================%
+\section{Excellence \mscatag{REL-EVA-RE}}
+\label{sc:excellence}
+%==================================================================================%
+
+
+%----------------------------------------------------------------------------------%
+\subsection{Quality and pertinence of the project's research and innovation objectives
+    (and the extent to which they are ambitious, and go beyond the state of the art)
+    }
+\label{ssc:excellence: quality}
+
+\textcolor{green}{The project will be referred to by its acronym \textbf{GROCOMO-CFT}, standing for \emph{GROupoid COvariance and Multilocal Observables in Classical Field Theories on curved backgrounds}. 
+This title reflects the central aim of the fellowship: to investigate the role of groupoid symmetries in the multisymplectic framework for classical field theory, and to develop a systematic theory of multilocal observables
+adapted to curved spacetime geometries. The acronym highlights both the methodological emphasis (groupoid covariance) and the innovative focus on observables beyond the strictly local ones to capture richer structures in field theories.}
+
+\textcolor{green}{This research proposal aims to develop a comprehensive geometric framework for the prequantum Standard Model on curved spacetime, addressing significant gaps in the geometric understanding of fundamental interactions. By leveraging advances in multisymplectic geometry, higher gauge theory, and $L_\infty$-algebras, this work seeks to formulate a unified geometric description of the electroweak interaction and gravitation, extend prequantization methods to gauge theories on curved spacetimes, and explore the geometric foundations of the Higgs mechanism. These efforts aim to bridge the divide between finite-dimensional manifold techniques and the infinite-dimensional spaces of field theories, potentially illuminating the interplay between quantum theory and general relativity.}
+
+\begin{figure}[htbp]
+  \centering
+  \textcolor{violet}{\includestandalone[mode=buildnew, width=0.8\linewidth]{Pics/standard-model}}
+  \caption{\textcolor{violet}{Fundamental particles of the Standard Model (placeholder figure).}}
+  \label{fig:sm}
+\end{figure}
+
+\paragraph{\textcolor{green}{Overall Context and Motivation}}
+
+\textcolor{green}{A persistent challenge in classical field theory is the development of a fully covariant canonical formalism that avoids relying on a decomposition of the spacetime manifold into time-slices. Achieving such a framework would enable a rigorous covariant quantization of relativistic field theories, such as Yang--Mills theory, providing an alternative to restoring covariance post-canonical quantization.}
+
+\textcolor{green}{The underlying variational principles led, in the 1970s, to the formulation of a geometric approach based on the multisymplectic formalism, as introduced by Gaw\k{e}dzki \cite{Gawedzki-1972} and Kijowski \cite{Kijowski-1973}, and later extended by Gotay, Isenberg, Marsden, and Montgomery \cite{Gotay-1991, Gimmsy1}. Concurrently, the 1980s saw the emergence of the covariant functional approach to relativistic and gauge theories, developed by Crnkovic--Witten \cite{Crnkovic-Witten:1987} and Zuckerman \cite{Zuckerman:1987}.}
+
+\textcolor{green}{While the covariant functional approach, primarily applied to Lagrangian field theories, naturally led to quantization (formalized within perturbative Algebraic QFT, cf. \cite{Brunetti-Fredenhagen-Verch-2003, Rejzner-2016}), the multisymplectic approach remains incomplete, particularly regarding the description of the algebra of multilocal observables and their quantization. Bridges between these two methodologies have been proposed, e.g. Hélein \cite{Helein:2011} and Sevestre--Wurzbacher \cite{Sevestre2021} on geometric prequantization, and Forger--Romero \cite{Forger2005} on deriving the Peierls bracket from multisymplectic data (see also the exposition by Gieres \cite{Gieres:2021}). Nonetheless, the geometric characterization of the complete algebra of observables and its quantization---including deformation quantization of interacting fields---remains unresolved.}
+
+\textcolor{green}{The prequantum Standard Model on curved spacetime provides a compelling context to test a comprehensive geometric framework for classical field theory. By bridging finite- and infinite-dimensional techniques, this approach aims to clarify the structure of quantum fields and their interactions, and to move toward a unified geometric description of the electroweak interaction and gravitation.}
+
+%----------------------
+\subsubsection*{\textcolor{green}{The Standard Model and Gauge Symmetries on Flat Spacetime}}
+\textcolor{green}{State of the art: The Standard Model can be formulated using principal bundles $P$ with structure group $G$, where matter particles are classified by representations of $G$ on associated bundles $E = P \times_G V$ and gauge bosons are described as principal connections $A \in \Omega^1(P, \mathfrak g)$. This construction is well established on Minkowski space.}
+
+\textcolor{green}{Open problem: On a curved Lorentzian manifold, the absence of global Poincaré symmetry makes this formulation incomplete. A major open problem is to extend the gauge-theoretic Standard Model consistently to curved spacetimes, reconciling internal and spacetime symmetries.}
+
+%----------------------
+\subsubsection*{\textcolor{green}{From Groups to Groupoids: Local Symmetries on Curved Spacetimes}}
+\textcolor{green}{State of the art: Global symmetry groups fail to capture the local nature of curved spacetimes. Lie groupoids (e.g.\ the pair groupoid $\mathrm{Pair}(M)$, the frame groupoid $GL(TM)$, and its metric-preserving subgroupoid $O(TM,g)$) generalize symmetries to this context \cite{Forger2005, CostaPegas2021}. The frame groupoid satisfies $GL(TM) \cong J^1(\mathrm{Pair}(M))$, linking groupoid geometry to jet bundles. Forger and collaborators have reformulated Noether’s theorem via groupoid symmetries.}
+
+\textcolor{green}{Open problems: Incorporating spinor fields requires a spin extension of the Poincaré groupoid, analogous to $\Spin(1,3)$ for $SO(1,3)$. Defining covariance under groupoid actions, intermediate between global Poincaré invariance and full diffeomorphism invariance, remains open.}
+
+%----------------------
+\subsubsection*{\textcolor{green}{Gravity and Geometric Encoding of Tetrads}}
+\textcolor{green}{State of the art: In Palatini and Einstein--Cartan formalisms, gravity is encoded by tetrads and spin connections. Teleparallel gravity uses a flat, torsionful connection, while Baez--Wise recast GR as a higher gauge theory of the Poincaré 2-group \cite{BaezWise2005}.}
+
+\textcolor{green}{Open problems: We propose to model gravity via groupoid-valued connections, keeping translations external rather than internal symmetries. The main challenge is to develop curvature and torsion for Poincaré-groupoid connections, potentially modeling the graviton field. Spin extensions will be required to treat fermions.}
+
+%----------------------
+\subsubsection*{\textcolor{green}{Multilocal Observables and Higher Structures}}
+\textcolor{green}{State of the art: Multisymplectic geometry yields $L_\infty$-algebras of observables \cite{Rogers2010}, but treatments have been largely local. Recent work (e.g.\ Frabetti et al.) introduces multilocal observables, requiring higher-categorical methods.}
+
+\textcolor{green}{Open problems: Establishing a full algebraic and geometric framework for multilocal observables on curved spacetimes, including homotopy comomentum maps for groupoid symmetries, remains open. This would extend Noether’s theorem to multi-point conserved quantities.}
+
+%----------------------
+\subsubsection*{\textcolor{green}{Project Objectives and Research Excellence}}
+\begin{itemize}[noitemsep,topsep=0pt]
+  \item \textcolor{green}{\textbf{WP1: Poincaré Groupoid on Curved Spacetime.} Develop the theory of the Poincaré groupoid $O(TM,g) \rightrightarrows M$ and its spin extension to accommodate fermionic matter.}
+  \item \textcolor{green}{\textbf{WP2: Groupoid Gauge Theory of Gravitation.} Formulate gravity as a connection on the Lie algebroid of the Poincaré groupoid, preserving translations as external symmetries.}
+  \item \textcolor{green}{\textbf{WP3: Multilocal Observables.} Extend multisymplectic geometry to multilocal observables and define homotopy comomentum maps for groupoid actions.}
+  \item \textcolor{violet}{\textbf{WP4: \dots} (placeholder for an additional work package, e.g.\ Higgs mechanism or prequantum extensions).}
+\end{itemize}
+
+\paragraph{\textcolor{green}{Quality and pertinence of objectives}}  
+\textcolor{green}{The objectives address problems open for over 50 years, combining Standard Model geometry, groupoid covariance, and higher algebra. They are measurable (each WP has concrete deliverables) and directly relevant to the host group’s expertise.}
+
+\paragraph{\textcolor{green}{Beyond the state of the art}}  
+\textcolor{green}{The project builds on recent breakthroughs (Forger on groupoid Noether theorems, Baez--Wise on higher gauge gravity, Frabetti on multilocal observables). By unifying these, it goes decisively beyond existing frameworks.}
+
+\paragraph{\textcolor{green}{Ambition}}  
+\textcolor{green}{The project proposes a covariant geometric model of field theory on curved spacetimes that resolves long-standing conceptual gaps. Its interdisciplinary nature---bridging advanced geometry, mathematical physics, and higher algebra---illustrates its ambition.}
+
+\paragraph{\textcolor{green}{Realistic feasibility}}  
+\textcolor{green}{Preliminary results have been developed in Lyon–Dijon–Metz working groups. The CR and PS are central to this network, ensuring feasibility. The objectives align perfectly with the host group’s ongoing research programme.}
+
+
+
+%----------------------------------------------------------------------------------%
+\subsection{Soundness of the proposed methodology
+    (including interdisciplinary approaches, consideration of the gender
+    dimension and other diversity aspects if relevant for the research project,
+    and the quality of open science practices) 
+    }
+\label{ssc:excellence: methodology}
+ %----------------------------------------------------------------------------------%
+
+\subsubsection*{Overall methodology}
+
+\textcolor{orange}{\textbf{Novel tools.} 
+The project introduces new mathematical instruments into established yet frontier domains (the Standard Model and beyond, gravitational fields, General Relativity). Specifically, we will implement: (i) symmetry groupoids, (ii) connections on groupoids and algebroids, and (iii) momentum maps associated with groupoid symmetries. These tools will allow us to extend multisymplectic and covariant phase space methods to a broader class of field theories.}
+
+\textcolor{orange}{\textbf{Innovative assumption.} A central methodological step is to replace the traditional role of the Poincaré group within the Standard Model by a \emph{Poincaré groupoid}. This new structure is naturally adapted to curved backgrounds, enabling a formulation of conservation laws and symmetry principles that remain valid beyond the flat spacetime setting. In the flat limit, the groupoid reduces to the standard Poincaré group, ensuring consistency with established physics.}
+
+\textcolor{orange}{\textbf{Overall strategy.} The methodology will proceed incrementally: starting from finite-dimensional groupoids, passing to algebroid formulations, and extending to $L_\infty$-structures when required. Intermediate results (existence theorems, Reduction to known cases) will be publishable in their own right, while the final aim is to integrate groupoid covariance with field-theoretic models. Applications will cover the Standard Model with Higgs sector on curved spacetimes, as well as gravitational theories, including the treatment of the graviton.}
+
+\textcolor{orange}{\textbf{Main challenges.} The project faces two classes of challenges: (i) mathematical complexity, due to the use of groupoids, algebroids, and higher structures; (ii) physical applications, especially the consistency of the Higgs mechanism in curved settings and the interpretation of the graviton in the groupoid framework.}
+
+\textcolor{orange}{\textbf{Mitigation.} These difficulties will be addressed by layering the development (groupoids $\to$ algebroids $\to$ higher structures), by validating the framework against consistency checks (flat limit, degree-of-freedom counting, closure of brackets), and by fallback strategies (e.g. focusing on pure Yang–Mills sectors in case of difficulties with the Higgs field). Prototype multisymplectic integrators will serve as additional validation tools.}
+
+\textcolor{blue}{[Here you may add explicit links to your project objectives/WPs, e.g. ``OBJ1: define the Poincaré groupoid... OBJ2: develop groupoid momentum maps... OBJ3: apply to Higgs on curved spacetimes... OBJ4: test graviton sector...'']}
+
+
+\subsubsection*{Integration of methods and disciplines}
+
+\textcolor{orange}{The methodology integrates expertise from differential geometry and higher structures (groupoids, algebroids, $L_\infty$-algebras), mathematical physics (multisymplectic geometry, covariant phase space, Noether theorems), and numerical analysis (multisymplectic integrators). Theoretical developments will be cross-validated with computational prototypes, ensuring alignment between formal proofs and concrete test cases. Interdisciplinary collaboration will be fostered through joint seminars, technical notes, and shared repositories.}
+
+\textcolor{blue}{[If relevant, specify concrete collaborators or institutions contributing each expertise area, e.g. ``geometry expertise at Lyon, physics expertise at Sapienza, numerical methods at ...'']}  
+
+\subsubsection*{Gender dimension and other diversity aspects}
+
+\textcolor{orange}{The gender dimension is not directly relevant to the scientific content of this project. However, it will be addressed at the level of process by ensuring inclusive language in all dissemination materials, encouraging balanced participation in seminars and co-authorship, and facilitating hybrid or remote activities to support researchers with care responsibilities. Commitment to diversity will also be reflected in citation practices and the selection of invited speakers.} 
+
+\textcolor{blue}{[Here you may add any specific institutional policy, local initiatives, or personal track record you want to highlight, e.g. participation in equality committees, previous gender-balance actions in event organization, etc.]}
+
+\subsubsection*{Open science practices}
+
+\textcolor{orange}{Open science is an integral part of the methodology. All preprints will be immediately shared on arXiv or HAL, and open access publication will be pursued with CC-BY licenses whenever possible. Source code, symbolic computations, and reproducibility packages will be maintained in public repositories (GitHub/GitLab) with semantic versioning, continuous integration, and DOI assignment via Zenodo. Technical notes will document both positive and negative results, ensuring transparency of the research process. Synthetic datasets and benchmark configurations will be openly released with FAIR metadata standards.}
+
+\textcolor{orange}{A reproducibility package including containerized environments and one-click scripts will be provided to reproduce figures and calculations. Key milestones: by Month 6, a public repository with first technical notes; by Month 12–18, releases with DOI and full reproducibility packages. Key performance indicators include the number of releases, successful independent reproductions, and adoption by external researchers.}
+
+\textcolor{blue}{[If applicable, add links or commitments to specific institutional repositories, local OS policies, or personal track record in open science, e.g. ``previously maintained open code at ...'' or ``institutional mandate at Sapienza/Lyon''].}
+
+
+%----------------------------------------------------------------------------------%
+\subsection{Quality of the supervision, training and the two-way transfer of
+    knowledge between the researcher and the host}
+\label{ssc:excellence: supervision}
+
+
+\subsubsection*{Supervisor’s Excellence and Qualifications}
+
+\textcolor{orange}{The fellowship will be supervised by \emph{Prof. Alessandra Frabetti}, Full Professor of Mathematics at the University of Lyon 1 and member of the Institut Camille Jordan (ICJ). Prof. Frabetti (hereafter referred to as the \textbf{PS}, prospective supervisor) is an internationally recognized expert in algebraic and geometrical methods for Quantum Field Theory, including Renormalisation Hopf algebras, groupoids, and Poisson bundles. She has authored more than 15 peer-reviewed publications and three preprints, and is regularly invited as a speaker to international conferences. According to her Google Scholar profile, she has over 1,500 citations and an h-index of 14, reflecting the significant impact of her research \href{https://scholar.google.com/citations?user=d5_OM3wAAAAJ&hl=it&oi=ao}{[Google Scholar]}.}  
+
+\textcolor{orange}{The PS began her career as an Associate Professor at Lyon 1 in 2001 and was later promoted to Full Professor. She has held numerous leadership and service roles, including membership of national scientific committees such as the National University Council (CNU 25, 2003–2010), the French National Research Agency (ANR, 2014–2016), and the Scientific Committee of the National Institute of Mathematical Sciences (CSI-INSMI, 2019–2023). Locally, she has served on the Department Council of Mathematics (since 2022), the ICJ scientific committee (2007–2010, 2021–present), and has directed the first-year school in Mathematics and Computer Science at Lyon University (2021–2023). She is also regularly appointed as a member of hiring committees in mathematical physics across France. This combination of scientific excellence and extensive governance experience ensures that the Candidate Researcher (hereafter referred to as the \textbf{CR}) will benefit from a well-structured, well-connected, and supportive training environment.}  
+
+\textcolor{orange}{The PS has successfully supervised PhD candidates and postdoctoral researchers, providing effective mentorship that has supported their career progression into academic and research careers. Her availability, expertise, and commitment make her exceptionally well-qualified to guide the CR in achieving both the scientific and professional goals of the fellowship.}  
+
+\textcolor{blue}{[Verified: currently supervising 1 PhD student (H.-C. Nguyên, 2024–2027). Additional details on the total number of PhD students and postdoctoral researchers supervised in the past may be inserted here.]}  
+
+\textcolor{blue}{[Optional: include information on invited or visiting professorships held by the PS, if confirmed from institutional or external sources.]}  
+
+\subsubsection*{Collaborative Environment and Expertise}
+
+\textcolor{orange}{The Mathematical Physics group at ICJ has established itself as a dynamic research hub, with recent contributions by Frabetti, Ryvkin, and Krashenko forming the foundation of this proposal. The group has grown significantly in recent years, adding new faculty and doctoral students, and strengthening partnerships with INSA and the Physics Department. This environment fosters interdisciplinary collaboration, integrating expertise from geometry, algebra, and field theory.}  
+
+\textcolor{orange}{The CR has a longstanding collaboration with the ICJ group, evidenced by joint publications with \emph{Leonid Ryvkin}, co-organization of advanced courses, and co-mentorship by the PS in the current CIVIS-3i MSCA Cofund fellowship. The CR has also contributed to the Labex MiLyon “Higher Structures in Differential Geometry” and the ANR “GeoQFT” initiative, both closely aligned with the themes of this proposal. The CR has been a scientific guest of ICJ for more than six months through three independent visits, during which workshops and seminars were organized, and regular participation in departmental working groups on mathematical physics and geometry took place.}  
+
+\subsubsection*{Planned Training Activities}
+
+\textcolor{orange}{The fellowship includes a structured training programme designed to enhance scientific, organizational, and transferable skills:}
+
+\begin{itemize}[noitemsep,topsep=0pt]
+    \item \textbf{\textcolor{orange}{Scientific training:}} \textcolor{orange}{Active participation in ICJ seminars and working groups on higher structures and mathematical physics; attendance at specialized workshops; collaboration with INSA and the Department of Physics on interdisciplinary projects.}
+    \item \textbf{\textcolor{orange}{Management and organization :}} \textcolor{orange}{Involvement in the organization of seminars, workshops, and collaborative meetings; training in project planning and reporting.}
+    \item \textbf{\textcolor{orange}{Transferable skills:}} \textcolor{orange}{Opportunities for teaching, co-supervision of Master’s and Bachelor’s students, and mentoring of PhD candidates; structured courses offered at Lyon University on communication, grant writing, open science, and career development.}
+\end{itemize}
+
+\textcolor{blue}{[Optional: mention specific institutional training programmes or doctoral school modules at Lyon that provide transferable skills, if relevant.]}  
+
+\subsubsection*{Two-Way Knowledge Transfer}
+
+\textbf{\textcolor{orange}{From host to CR:}}  
+\textcolor{orange}{The ICJ group provides world-class expertise in operads, deformation quantization, graded geometry, and higher algebraic structures. Combined with the PS’s international collaborations and strong administrative leadership, this environment will broaden the CR’s methodological toolkit, enhance professional skills, and provide access to international research networks.}  
+
+\textbf{\textcolor{orange}{From CR to host:}}  
+\textcolor{orange}{The CR contributes expertise in multisymplectic geometry, observable Reduction, and homological methods in symmetry, complementing the ICJ group’s algebraic focus. Knowledge transfer will occur through seminars, collaborative publications, and mentoring of students, ensuring long-term added value for the ICJ research community.}
+
+
+
+
+%----------------------------------------------------------------------------------%
+
+
+%----------------------------------------------------------------------------------%
+\subsection{Quality and appropriateness of the researcher's professional
+    experience, competences and skills}
+\label{ssc:excellence: researcher}
+
+\textcolor{orange}{The Candidate Researcher (hereafter \textbf{CR}) is a differential geometer with a strong background in mathematical physics, focusing on symplectic and multisymplectic geometry, $L_\infty$-algebras, and higher structures in geometry and physics. CR’s work lies at the intersection of differential geometry and mathematical physics, addressing foundational questions through a unified geometric perspective. Over more than four years of postdoctoral experience, CR has developed recognized expertise in computations within higher homotopical algebra, motivated by multisymplectic geometry and the mathematical formulation of classical field theory. This combination of geometry and physics is highly appropriate for the proposed project.}  
+
+\textcolor{orange}{CR obtained a double PhD in Mathematics from KU Leuven (Belgium) and Università Cattolica del Sacro Cuore (Italy), with a thesis on homotopy comomentum maps in multisymplectic geometry. The doctoral research produced novel results on $L_\infty$-algebras of observables, homotopy comomentum maps for diffeomorphism groups, and higher embeddings of multisymplectic algebras, with applications ranging from hydrodynamical models to link invariants. These results were published in peer-reviewed journals and presented at international conferences.}  
+
+\textcolor{orange}{Following the PhD, CR secured five independently written research grants and held postdoctoral positions at the Max Planck Institute for Mathematics in Bonn (2021–2022), Università Cattolica del Sacro Cuore in Brescia (2022–2024), and currently at Sapienza University of Rome as a CIVIS-3i MSCA Cofund fellow (2024–2026). These experiences, in internationally renowned institutions, demonstrate CR’s ability to thrive in competitive environments and contribute significantly to cutting-edge research.}  
+
+\textcolor{orange}{CR’s postdoctoral work has advanced the field of multisymplectic geometry and its applications to classical field theories, with contributions on symplectic and multisymplectic Reduction, the geometric interpretation of the energy-momentum tensor, constraint algebras for multisymplectic observables, and algebraic frameworks for observables. CR has also explored interdisciplinary directions, including quantum algorithms for modular arithmetic, linking geometric methods to quantum computation.}  
+
+\textcolor{orange}{Bibliometric indicators confirm the impact and appropriateness of CR’s research trajectory. According to Google Scholar, CR has 12 publications, 29 citations, and an h-index of 3:contentReference[oaicite:1]{index=1}. These figures, combined with the quality of the publication venues and the breadth of international collaborations, illustrate CR’s growing recognition in the fields of geometry and mathematical physics.}  
+
+\textcolor{orange}{CR’s professional experience also includes relevant teaching and organizational activities, such as co-organizing international workshops (e.g. Workshop on Multisymplectic Structures in Geometry and Physics, Lyon 2024) and delivering advanced mini-courses (e.g. Reduction of (multi)-symplectic observables, Salerno 2024). These activities demonstrate strong communication skills and the capacity to contribute actively to the academic community.}  
+
+\textcolor{orange}{Before fully committing to academia, CR also gained experience in the IT sector as a Java programmer and system administrator, which provided advanced programming and scientific computing skills. CR is proficient in C++, Python, Haskell, CUDA, and Linux system administration, competencies that complement the mathematical expertise and are especially valuable for computational modelling and the development of multisymplectic numerical integrators.}  
+
+\textcolor{orange}{Overall, CR’s professional trajectory is highly appropriate for the proposed fellowship. The unique combination of theoretical training in physics, advanced mathematical expertise, international research experience, and computational competence ensures that CR is exceptionally well-prepared to address the ambitious objectives of the project and to maximize the scientific output of the fellowship.}  
+
+\textcolor{blue}{[Optional: add precise counts of invited talks (15), contributed talks (20), conferences attended (53), and organized (3) as evidence of CR’s visibility and international recognition, cf. CV.}  
+
+
+%----------------------------------------------------------------------------------%
+
+
+%==================================================================================%
+%=====    IMPACT   ================================================================%
+%==================================================================================%
+\section{Impact \mscatag{IMP-ACT-IA}}
+\label{sc:impact}
+%==================================================================================%
+
+
+%----------------------------------------------------------------------------------%
+\subsection{Credibility of the measures to enhance the career perspectives
+    and the employability of the researcher, and the contribution to their skills
+    development}
+\label{ssc:impact: career}
+
+ \subsubsection*{2.1 Credibility of the measures to enhance the career perspectives and employability of the researcher and contribution to skills development}
+
+\textcolor{orange}{\textbf{Career Objective.} The Candidate Researcher (hereafter \textbf{CR}) aims to become an \emph{independent Principal Investigator (PI)} in academia, targeting faculty or permanent research positions at leading European universities and research centres. In particular, CR seeks to exploit the MSCA PF to consolidate scientific independence and prepare for ambitious future applications such as an ERC Starting Grant. The MSCA PF provides a structured pathway to independence, while ensuring strong employability both inside and outside academia.}
+
+\paragraph*{\textcolor{orange}{Specific measures to enhance career perspectives and employability}}
+\begin{itemize}[noitemsep,topsep=2pt]
+  \item \textcolor{orange}{\textbf{Advanced research independence.} CR will plan and lead day-to-day research activities (work planning, methodology choices, validation), effectively simulating small-team leadership and demonstrating readiness for independent PI roles.}
+  \item \textcolor{orange}{\textbf{Team leadership \& supervision.} CR will co-supervise junior researchers (e.g. MSc/PhD students) and coordinate focused reading groups or journal clubs, acquiring hands-on experience in mentoring, feedback delivery, and task delegation.}
+  \item \textcolor{orange}{\textbf{Interdisciplinary integration.} The project blends differential geometry, mathematical physics, and computational methods, expanding CR’s versatility and enhancing employability across academic departments and research institutes.}
+  \item \textcolor{orange}{\textbf{Long-term integration in Lyon.} The fellowship institutionalises CR’s collaboration with the Institut Camille Jordan (ICJ), enabling sustained, structured engagement with the host team and embedding CR in its international network.}
+  \item \textcolor{orange}{\textbf{Active participation in national research networks.} CR will participate in the mathematical-physics working groups of the Lyon–Dijon–Metz consortium, reinforcing long-term ties with the French research community. This measure also includes involvement in the preparation of a forthcoming ANR project in collaboration with Bonn, thereby strengthening CR’s strategic positioning within national and international funding frameworks.}
+  \item \textcolor{orange}{\textbf{Acquisition of new specialised expertise.} A central component of employability enhancement is the structured training CR will receive in Lie groupoids, higher Lie algebroids, and groupoid connections. These advanced topics—closely aligned with the project’s objectives—are not yet part of CR’s core expertise and will significantly expand long-term research capacities.}
+  \item \textcolor{orange}{\textbf{Career development training.} CR will attend host-offered modules on grant writing, project management, leadership, open science, IPR and research ethics, with a personalised career plan and mentorship from the PS.}
+  \item \textcolor{orange}{\textbf{Visibility \& dissemination.} Targeted publications in high-quality venues and presentations at international conferences will raise CR’s profile; outreach activities will strengthen broader impact and communication skills.}
+  \item \textcolor{orange}{\textbf{Transition support.} The PS and host will support applications to follow-up funding (e.g. national grants, ERC Starting) and faculty posts, ensuring a smooth post-fellowship transition.}
+  \item \textcolor{blue}{[If applicable, name specific host training units or doctoral schools (e.g. transferable-skills catalogue, teaching certificates, entrepreneurship labs).]}
+\end{itemize}
+
+\paragraph*{\textcolor{orange}{Expected contribution of skills development to CR’s future career}}
+\begin{itemize}[noitemsep,topsep=2pt]
+  \item \textcolor{orange}{\textbf{Research excellence.} Mastery of project-specific methods will position CR as an expert in a high-impact niche, directly strengthening competitiveness for faculty searches and grant panels.}
+  \item \textcolor{orange}{\textbf{Leadership \& management.} Experience in planning, budgeting (where applicable), risk management, and supervision will translate into the operational skills required to run an independent group.}
+  \item \textcolor{orange}{\textbf{Interdisciplinary competence.} Fluency across geometry/physics/computation broadens funding opportunities (including interdisciplinary calls) and facilitates collaborations across departments.}
+  \item \textcolor{orange}{\textbf{Collaboration \& networking.} Deep integration within ICJ and its partners will yield durable collaborations, co-authorships, and recommendation channels essential for academic placements.}
+  \item \textcolor{orange}{\textbf{Communication \& dissemination.} Strengthened scientific writing, presenting, and outreach will support grant success, student recruitment, and stakeholder engagement as an independent PI.}
+  \item \textcolor{orange}{\textbf{Mentoring \& teaching.} Co-supervision and teaching-related activities will refine pedagogy and mentoring—core responsibilities of academic PIs.}
+  \item \textcolor{orange}{\textbf{Personal effectiveness.} Delivering a complex international project will build resilience, autonomy, and strategic planning—key signals of readiness for independence.}
+  \item \textcolor{orange}{\textbf{Acquisition of new specialised expertise.} Beyond consolidating CR’s background in multisymplectic geometry and $L_\infty$-algebras, the fellowship will provide structured training in areas where CR is not yet a specialist but that are essential for the project’s objectives, namely: Lie groupoids, higher Lie algebroids, and groupoid connections. Acquiring this knowledge under the guidance of the PS and the ICJ team will expand CR’s technical toolkit and significantly enhance long-term employability.}
+  \item \textcolor{orange}{\textbf{Language acquisition.} CR will acquire advanced proficiency in French during the fellowship, a crucial step to becoming competitive for permanent academic positions in France (e.g. “Maître de Conférences” at Lyon and other French universities). This language training complements the scientific preparation and strengthens long-term employability within the French academic system.}
+  \item \textcolor{blue}{[Optional: indicate concrete formats for this training, e.g. “doctoral-level courses, dedicated seminars, or close collaboration with ICJ experts already working on groupoid connections.”]}
+\end{itemize}
+
+\paragraph*{\textcolor{orange}{Inside vs. outside academia}}
+\begin{itemize}[noitemsep,topsep=2pt]
+  \item \textcolor{orange}{\textbf{Inside academia.} MSCA prestige, leadership evidence, publications, and international integration (ICJ) collectively strengthen CR’s case for tenure-track/group-leader roles and follow-up grants (e.g. ERC Starting).}
+  \item \textcolor{orange}{\textbf{Outside academia.} Transferable skills (project management, teamwork, communication, problem solving) ensure strong employability in industrial R\&D, public research agencies, and innovation ecosystems.}
+  \item \textcolor{blue}{[Optionally add concrete non-academic interfaces relevant to the host ecosystem, e.g. tech-transfer office, industry seminars, joint labs.]}
+\end{itemize}
+
+\paragraph*{\textcolor{orange}{Added value over prior experience (CIVIS-3i MSCA Cofund)}}
+\textcolor{orange}{CR’s current CIVIS-3i experience has provided broad mobility and exposure to diverse environments. The MSCA PF \emph{deepens and institutionalises} these gains by enabling long-term, structured integration at ICJ–Lyon under the PS’s mentorship, with formal leadership roles, sustained co-supervision, and a tailored training plan aligned with the milestones of the proposed project. This structured integration will cement CR’s scientific independence, directly supporting the preparation of more ambitious grant applications such as an ERC Starting Grant.}
+\textcolor{blue}{[If desired, reference specific past research stays enabled by CIVIS-3i and how each experience feeds into the planned MSCA PF activities at ICJ.]}
+
+
+%----------------------------------------------------------------------------------%
+
+%----------------------------------------------------------------------------------%
+\subsection{Suitability and quality of the measures to maximize expected
+    outcomes and impacts, as set out in the dissemination and exploitation plan,
+    including communication activities \mscatag{COM-DIS-VIS-CDV}}
+\label{ssc:impact: outcomes}
+
+\subsubsection*{\textcolor{orange}{Overview and objectives}}
+\textcolor{orange}{The project will deliver a new theoretical framework for covariant field theory on curved spacetimes via groupoid symmetry actions, alongside illustrative case studies (toy scalar field model; selected sectors of the Standard Model). From project month~1, dissemination, exploitation (in the academic sense), and communication activities will run in parallel with research to maximise uptake across geometry and mathematical physics.}
+
+\subsubsection*{\textcolor{orange}{Primary targets and audiences}}
+\textcolor{orange}{\textbf{Scientific community:} geometers, mathematical physicists, and researchers at the geometry–physics interface (including higher structures).}
+\textcolor{orange}{\textbf{Secondary audiences:} graduate students and early-career researchers in geometry/physics; broader interdisciplinary communities interested in symmetry/covariance.}
+\textcolor{blue}{[Add any specific stakeholder sub-groups if relevant, e.g. local doctoral schools, national mathematical societies.]}
+
+\subsubsection*{\textcolor{orange}{Dissemination to the scientific community (journals, events, networks)}}
+\begin{itemize}[noitemsep,topsep=2pt]
+  \item \textcolor{orange}{\textbf{Publications.} Submit core results to journals at the geometry–physics interface: \emph{Communications in Mathematical Physics}, \emph{Journal of Geometry and Physics}, \emph{Differential Geometry and its Applications}, and related venues. Deposit all versions on arXiv; ensure OA compliance via institutional repositories if needed.}
+  \item \textcolor{orange}{\textbf{Conferences and workshops.} Present findings at major meetings: Poisson Conference, GAP Geometry and Physics, International Fall Workshop on Geometry and Physics, and cognate events.}
+  \item \textcolor{orange}{\textbf{ICJ schools and seminars.} Disseminate through the ICJ fall schools on Higher Structures and Applications to Geometry and Physics; give departmental seminars/colloquia in Lyon and partner nodes.}
+  \item \textcolor{orange}{\textbf{National network engagement.} Actively contribute to the Lyon–Dijon–Metz mathematical-physics working groups to consolidate national visibility and integrate results into ongoing seminar series.}
+  \item \textcolor{blue}{[List additional recurring venues from CV (years/editions) to underline continuity, e.g. “Poisson~20XX, IFWGP~20XX”.]}
+\end{itemize}
+
+\subsubsection*{\textcolor{orange}{Open science and knowledge sharing (exploitation in academia)}}
+\begin{itemize}[noitemsep,topsep=2pt]
+  \item \textcolor{orange}{\textbf{Open repositories.} Maintain public GitHub repositories hosting LaTeX working notes, draft manuscripts, lecture notes, and seminar materials with version control, issue tracking, and DOIs via Zenodo at each milestone release.}
+  \item \textcolor{orange}{\textbf{Computational notebooks.} Release symbolic computations as well-documented Jupyter notebooks (reproducible examples for the scalar toy model and groupoid-covariant constructions), following FAIR principles for code/data artefacts.}
+  \item \textcolor{orange}{\textbf{Reusability packages.} Provide minimal “one-command” environments (e.g., Conda/containers) to reproduce algebraic checks and figures; include LICENSE (MIT/BSD), CITATION.cff, and contribution guidelines.}
+  \item \textcolor{orange}{\textbf{Negative/neutral results.} Archive technical notes documenting non-successful approaches to guide future work and avoid community duplication.}
+  \item \textcolor{blue}{[Insert repository URLs/organisations once created (e.g., \texttt{github.com/\{org\}/\{project\}}).]}
+\end{itemize}
+
+\subsubsection*{\textcolor{orange}{Communication and public engagement (messages, tools, channels)}}
+\begin{itemize}[noitemsep,topsep=2pt]
+  \item \textcolor{orange}{\textbf{Core messages.} Why covariance and symmetry matter for understanding spacetime and field theories; how abstract mathematics shapes modern physics; the value of open, reproducible research.}
+  \item \textcolor{orange}{\textbf{Project hub.} Launch a project page/blog with accessible updates, short explainers, and links to preprints and code. Cross-post highlights on academic social platforms.}
+  \item \textcolor{orange}{\textbf{Outreach formats.} Public lectures (e.g., Researchers’ Night), school/undergraduate seminars, and short articles for institutional news; visual explainers for non-specialists.}
+  \item \textcolor{orange}{\textbf{Language engagement.} Progressive use of French in outreach within the host ecosystem to widen reach (e.g., local seminars, student associations), aligning with CR’s advanced French training.}
+  \item \textcolor{blue}{[Add concrete cadence targets, e.g. “\(\geq\)4 blog posts/year; \(\geq\)3 outreach talks over the project; \(\geq\)2 bilingual posts”.]}
+\end{itemize}
+
+\subsubsection*{\textcolor{orange}{Timeline, roles, and proportionality}}
+\begin{itemize}[noitemsep,topsep=2pt]
+  \item \textcolor{orange}{\textbf{M1–M3:} Set up GitHub org, project page, initial technical note; announce goals and planned releases.}
+  \item \textcolor{orange}{\textbf{M6–M12:} First preprint + notebooks (scalar toy model); seminar circuit (ICJ + national nodes).}
+  \item \textcolor{orange}{\textbf{M12–M18:} Journal submission of core theory paper; conference presentations (Poisson/GAP/IFWGP); release v1.0 reproducibility package (Zenodo DOI).}
+  \item \textcolor{orange}{\textbf{M18–M24(+):} Applied case studies (SM sectors); second wave of preprints; advanced tutorials; capstone outreach event.}
+  \item \textcolor{orange}{\textbf{Roles.} CR leads content creation and releases; PS offers editorial oversight, institutional visibility, and access to ICJ channels; host comms office supports press/news.}
+\end{itemize}
+
+\subsubsection*{\textcolor{orange}{Indicators and post-project sustainability}}
+\begin{itemize}[noitemsep,topsep=2pt]
+  \item \textcolor{orange}{\textbf{KPI examples.} \#preprints/journal articles; \#conference talks; \#repository stars/forks; \#independent reproductions (issues/PRs); seminar invitations; website traffic; outreach attendance.}
+  \item \textcolor{orange}{\textbf{Sustainability.} Keep repositories and website online beyond the project; integrate materials into future courses/seminars; fold results into follow-up proposals (e.g., ANR, ERC Starting).}
+  \item \textcolor{blue}{[Optionally, add target figures per KPI, e.g. “2 preprints + 1 journal submission/year; 2–3 major talks/year”.]}
+\end{itemize}
+
+\subsubsection*{\textcolor{orange}{Notes on exploitation and IP appropriateness}}
+\textcolor{orange}{Given the foundational, theoretical nature of the outputs, exploitation is academic (reuse in research/teaching) and fully compatible with open access and open-source licensing. No patentable foreground is expected; openness maximises scholarly uptake and long-term impact.}
+\textcolor{blue}{[If the host requires a standard IP statement, insert the institutional template here.]}
+
+
+%----------------------------------------------------------------------------------%
+
+%----------------------------------------------------------------------------------%
+\subsection{The magnitude and importance of the project's contribution to the
+    expected scientific, societal and economic impacts}
+\label{ssc:impact: future}
+
+\subsubsection*{\textcolor{orange}{Target stakeholders and communities}}
+\textcolor{orange}{The primary beneficiaries of this project will be researchers in geometry and theoretical physics, especially those working at the interface of differential geometry and quantum field theory. Stakeholders include mathematical societies, doctoral schools, research institutes, and interdisciplinary networks at the geometry–physics interface. Outreach audiences interested in fundamental physics will indirectly benefit as results enter curricula and public science communication.}
+\textcolor{blue}{[Optional: add specific names of societies or doctoral schools to strengthen the institutional anchoring.]}
+
+\subsubsection*{\textcolor{orange}{Scientific impacts}}
+\begin{itemize}[noitemsep,topsep=2pt]
+  \item \textcolor{orange}{\textbf{Advancing knowledge.} The project addresses foundational geometric problems in field theory on curved spacetimes that have remained open for decades, providing a new framework for covariance based on groupoid symmetries.}
+  \item \textcolor{orange}{\textbf{Cross-disciplinary advances.} Results will enrich both geometry and physics, with applications to scalar fields and Standard Model sectors on curved backgrounds.}
+  \item \textcolor{orange}{\textbf{Training.} The Candidate Researcher (CR) will acquire expertise and disseminate it through seminars, schools, and future teaching, reinforcing Europe’s research capacity in higher geometry and mathematical physics.}
+  \item \textcolor{orange}{\textbf{Astrophysical modelling.} The framework is expected to be relevant for modelling phenomena in which matter or radiation fields evolve on curved spacetimes without significant back-reaction on the metric, e.g. near compact objects such as black holes or in early-universe cosmology.}
+\end{itemize}
+
+\textcolor{blue}{[Magnitude: estimate number of specialists directly reached, e.g. 200–300 annually via conferences, schools, and journals. Importance: results expected to become reference framework within 5–10 years at the geometry–physics interface.]}
+
+\subsubsection*{\textcolor{orange}{Economic and technological impacts}}
+\textcolor{orange}{No direct short-term economic or technological impacts are foreseen, given the project’s foundational nature. However, indirect impacts may arise in the long term through incorporation of mathematical methods into computational frameworks, symbolic algorithms, or modelling tools for curved geometries. The project also contributes to Europe’s intellectual infrastructure by training a highly skilled researcher and strengthening international collaborations.}
+
+\subsubsection*{\textcolor{orange}{Societal impacts}}
+\textcolor{orange}{The project enriches fundamental knowledge that underpins societal interest in cosmic phenomena such as black holes, gravitational waves, and the early universe. By providing rigorous models for fields on curved spacetimes, the project indirectly supports interpretation of high-profile scientific results. These include:}
+\begin{itemize}[noitemsep,topsep=2pt]
+  \item \textcolor{orange}{\textbf{Gravitational wave astronomy.} Europe is investing in the next-generation Einstein Telescope, expected to detect up to a thousand times more gravitational-wave sources than current detectors .}
+  \item \textcolor{orange}{\textbf{Black hole imaging.} The Event Horizon Telescope, supported in part by the ERC-funded BlackHoleCam project, produced the first images of black holes, including Sagittarius A*  .}
+  \item \textcolor{orange}{\textbf{Cosmology.} Projects such as ESA’s Planck satellite and the Horizon 2020 BeyondPlanck project have advanced CMB studies through integrated data analysis pipelines .}
+\end{itemize}
+
+\textcolor{orange}{By aligning with these global efforts, the project ensures that its theoretical advances contribute to the interpretative frameworks used in high-impact astrophysical and cosmological research. The magnitude of societal impact extends from several hundred active researchers in Europe and worldwide to broader public audiences, while the importance lies in providing robust intellectual foundations and inspiring future generations through high-visibility science.}
+
+
+\mscatagend{COM-DIS-VIS-CDV} \mscatagend{IMP-ACT-IA}
+%----------------------------------------------------------------------------------%
+
+
+%==================================================================================%
+%=====    QUALITY   ===============================================================%
+%==================================================================================%
+\section{Quality and Efficiency of the Implementation
+         \mscatag{QUA-LIT-QL} \mscatag{WRK-PLA-WP} \mscatag{CON-SOR-CS} \mscatag{PRJ-MGT-PM}}
+\label{sc:implementation}
+%==================================================================================%
+
+
+
+%----------------------------------------------------------------------------------%
+\subsection{Quality and effectiveness of the work plan, assessment of risks and
+    appropriateness of the effort assigned to work packages}
+\label{ssc:implementation:workplan}
+
+\paragraph{\textcolor{green}{Overall structure of the work plan}}
+\textcolor{green}{The project spans \textbf{24 months} and is organised into three interrelated Work Packages aligned with Section~1.1: 
+\emph{WP1: Poincaré Groupoid on Curved Spacetime}, 
+\emph{WP2: Groupoid Gauge Theory of Gravitation}, and 
+\emph{WP3: Multilocal Observables and Higher Structures}. 
+Each WP contains 2--3 technical tasks, an internal \emph{milestone} that validates progress and unlocks the next phase, and at least one \emph{deliverable} (preprint or journal submission). 
+Tasks are partially overlapped to allow load balancing and to mitigate the impact of unforeseen delays.}
+
+\paragraph{\textcolor{green}{Definitions (as per guidelines)}}
+\textcolor{green}{\emph{Deliverable:} a verifiable output (e.g.\ preprint/journal submission, technical report, DMP) submitted to the Commission/Agency. 
+\emph{Result:} knowledge or artefacts generated (e.g.\ formulations, algorithms, datasets/notebooks, trained researcher). 
+\emph{Milestone:} a control point confirming achievement of a key intermediate objective (verifiable decision/validation) that enables the next phase. 
+\emph{Tasks:} specific research goals producing the results and leading to the deliverable(s).}
+
+% ========================= WP1 =========================
+\subsubsection*{\textcolor{green}{WP1 — Poincaré Groupoid on Curved Spacetime (M1–M12)}}
+\textcolor{green}{\textbf{Goal.} Formalise local spacetime symmetries on curved backgrounds via Lie groupoids; construct the \emph{Poincaré groupoid} $O(TM,g)\rightrightarrows M$ and its \emph{spin} extension; clarify the relation $GL(TM)\cong J^1(\mathrm{Pair}(M))$ and its role for observer changes and covariance.}
+
+\textcolor{green}{\textbf{Tasks.}}
+\begin{itemize}[noitemsep,topsep=1pt]
+  \item \textcolor{green}{\textbf{T1.1 (M1–M6):} Foundations and observer kinematics. Systematise pair/frame groupoids, jets, and orthonormal frame groupoid $O(TM,g)$; fix notational and functorial conventions; work out canonical examples on model spacetimes.}
+  \item \textcolor{green}{\textbf{T1.2 (M4–M12):} Spin extension and associated bundles. Construct a \emph{spin Poincaré groupoid} suitable for fermions; analyse principal groupoid bundles vs.\ principal bundles; identify compatibility with internal gauge symmetries.}
+\end{itemize}
+
+\textcolor{green}{\textbf{Milestone M1 (M6):} Framework validated on prototypes (e.g.\ constant-curvature backgrounds); functorial properties fixed; criteria for spin extension stated.}
+
+\textcolor{green}{\textbf{Deliverable D1 (M12):} Preprint ``\emph{The Poincaré Groupoid and its Spin Extension on Curved Spacetimes}'' (submitted to a journal).}
+
+\textcolor{green}{\textbf{Expected results.} Rigorous formulation of local spacetime symmetries via groupoids; explicit spin extension; worked examples illustrating observer translation, frame changes, and the groupoid-covariance principle.}
+
+% ========================= WP2 =========================
+\subsubsection*{\textcolor{green}{WP2 — Groupoid Gauge Theory of Gravitation (M7–M20)}}
+\textcolor{green}{\textbf{Goal.} Develop a gauge-theoretic description of gravity with \emph{translations kept as external (groupoid) symmetries}: define connections on the Lie algebroid of the Poincaré groupoid; relate curvature/torsion to tetrad and spin connection; compare GR and teleparallel regimes within the groupoid formalism.}
+
+\textcolor{green}{\textbf{Tasks.}}
+\begin{itemize}[noitemsep,topsep=1pt]
+  \item \textcolor{green}{\textbf{T2.1 (M7–M12):} Groupoid connections and geometry. Define groupoid-/algebroid-valued connections, curvatures and torsions; derive Bianchi-type identities and natural covariance statements.}
+  \item \textcolor{green}{\textbf{T2.2 (M10–M18):} Gravitational modelling. Encode tetrad + spin connection as local components of a Poincaré-groupoid connection; identify conditions reproducing Levi-Civita vs.\ Weitzenböck regimes.}
+  \item \textcolor{green}{\textbf{T2.3 (M14–M20):} Consistency and toy models. Verify limits (flat/Minkowski), compare to higher-gauge approaches; test on scalar/Maxwell models on fixed curved backgrounds; outline coupling patterns.}
+\end{itemize}
+
+\textcolor{green}{\textbf{Milestone M2 (M18):} Covariance checks and consistency across regimes passed; at least one nontrivial toy model fully worked out.}
+
+\textcolor{green}{\textbf{Deliverable D2 (M22):} Preprint ``\emph{Gravity as a Groupoid Gauge Theory: Curvature, Torsion, and Covariance}'' (submitted to a journal).}
+
+\textcolor{green}{\textbf{Expected results.} Differential-geometric calculus for groupoid connections; mapping between groupoid curvature/torsion and classical GR/teleparallel data; demonstrator models on curved backgrounds and comparison baselines.}
+
+% ========================= WP3 =========================
+\subsubsection*{\textcolor{green}{WP3 — Multilocal Observables and Higher Structures (M15–M24)}}
+\textcolor{green}{\textbf{Goal.} Extend multisymplectic geometry to \emph{multilocal observables} equivariant under groupoid actions; construct \emph{homotopy comomentum maps} for groupoid symmetries acting on $L_\infty$-algebras of observables; provide reproducible case studies.}
+
+\textcolor{green}{\textbf{Tasks.}}
+\begin{itemize}[noitemsep,topsep=1pt]
+  \item \textcolor{green}{\textbf{T3.1 (M15–M20):} $L_\infty$ formalism for multilocal observables. Define brackets, coherence relations and naturality under groupoid actions; relate to covariant Noether-type statements.}
+  \item \textcolor{green}{\textbf{T3.2 (M19–M24):} Homotopy comomentum maps \& applications. Compute explicit examples (scalar toy model; selected SM sectors on fixed backgrounds); release reproducible \texttt{Jupyter} notebooks and LaTeX notes.}
+\end{itemize}
+
+\textcolor{green}{\textbf{Milestone M3 (M20):} Proof-of-concept achieved: complete multilocal observable algebra for at least one nontrivial model; prototype homotopy comomentum map computed.}
+
+\textcolor{green}{\textbf{Deliverable D3 (M24):} Preprint ``\emph{Multilocal Observables and Homotopy Comomentum Maps for Groupoid Symmetries}'' (submitted to a journal); public repo with notes/notebooks.}
+
+\textcolor{green}{\textbf{Expected results.} General $L_\infty$-algebraic machinery for multilocal observables; homotopy comomentum maps for groupoid symmetries; open-science artefacts (notes, notebooks) enabling reuse.}
+\textcolor{violet}{[Optional long-term outlook: outline connections to symmetry-breaking/Higgs in a follow-up project.]}
+
+% ========================= RISK =========================
+\subsubsection*{\textcolor{green}{Risk assessment and mitigation strategy}}
+\textcolor{green}{\textbf{Decoupled technical risks.} Although conceptually intertwined, WP1–WP3 have limited \emph{technical} interdependence. Bottlenecks in one WP do not block the others; the schedule embeds overlap to allow temporary reallocation of effort.}
+\textcolor{green}{\textbf{Researcher readiness.} The CR’s track record in multisymplectic geometry and higher structures, including published work involving explicit $L_\infty$ computations, reduces execution risk.}
+\textcolor{green}{\textbf{Built-in redundancy (WP3).} WP3 pursues multiple models; even partial success (restricted PDE families) yields publishable, reusable results with potential spillovers.}
+\textcolor{green}{\textbf{Quarterly reviews.} Progress is reviewed every quarter; deviations trigger corrective actions (task reprioritisation, targeted mentoring, methodological adjustments).}
+\textcolor{green}{\textbf{Network support.} Key contributors to adjacent methods (groupoids, higher gauge, multisymplectic) are within the host/network and can be consulted for rapid troubleshooting.}
+
+% ========================= GANTT =========================
+\paragraph{\textcolor{green}{Gantt chart (Months from start of action)}}
+\textcolor{green}{The Gantt chart below indicates WPs, tasks, milestones (◆), and deliverables (●). Months are counted from project start (M1–M24) as per the template.}
+
+\begin{figure}[htbp]
+  \centering
+  \includestandalone[mode=buildnew, width=\linewidth]{Pics/gantt}
+  \caption{Project timeline.}
+  \label{fig:gantt}
+\end{figure}
+
+%----------------------------------------------------------------------------------%
+
+%----------------------------------------------------------------------------------%
+\subsection{Quality and capacity of the host institutions and participating
+organizations, including hosting arrangements}
+\label{ssc:implementation: host}
+
+\textcolor{orange}{\textbf{Hosting arrangements:} The Candidate Researcher (CR) has already been hosted at the Institut Camille Jordan (ICJ, Université Claude Bernard Lyon 1) on three occasions of approximately one month each. During these stays, the host consistently provided a dedicated desk and office space, full computing access, and access to both departmental and central libraries. For shorter visits, CR successfully used the institute’s common library work areas, illustrating the host’s flexibility and capacity to accommodate researchers in different formats. The ICJ also demonstrated excellent organisational capacity, including efficient provision of IT access, office space, and administrative support. These prior experiences confirm the institute’s readiness to provide seamless and effective hosting arrangements for the MSCA fellowship, ensuring CR can integrate from the very first day.}
+
+\textcolor{orange}{\textbf{Scientific integration:} CR is already strongly integrated into the host’s scientific community. He is subscribed to the mathematical physics group’s mailing lists, participates in the organisational meetings of reading groups, and attends the biweekly departmental seminar. CR has co-organised working groups and mini-courses during past visits, demonstrating active engagement with departmental activities. He has also delivered invited talks at the ICJ seminar series (October 2022 and May 2023) and participated in joint workshops, confirming the host’s recognition of his scientific contributions. A close collaboration with Dr. Leonid Ryvkin (ICJ Lyon) has resulted in joint publications and thematic initiatives, further embedding CR within the host team. These activities reflect a proven track record of integration and a clear pathway for immediate and deep involvement during the fellowship.}
+
+\textcolor{orange}{\textbf{Infrastructure and support:} ICJ offers outstanding infrastructure and support services, from which CR has already benefited during previous visits. The institute provided access to well-equipped offices, IT and computing facilities, and extensive library collections. Administrative and IT staff have consistently supported CR’s stays with swift and efficient assistance. In addition, CR benefited from the intellectual infrastructure: collaborations and discussions with colleagues, such as Dr. Ryvkin at ICJ and Prof. François Gieres at the Physics Department, have already proven scientifically fruitful. This robust combination of physical, technical, and intellectual resources underscores the host’s strong capacity to support the fellowship.}
+
+\textcolor{orange}{\textbf{Inter-institutional environment:} Lyon’s academic ecosystem is highly interdisciplinary, and ICJ plays a central role within it. CR has already collaborated with other institutions in Lyon, including INSA Lyon (through joint work with Dr. Marco D’Agostino) and the Department of Physics (notably with Prof. François Gieres). He also participated in the Poisson Geometry thematic semester under the Labex MiLyon umbrella, which convened researchers from multiple Lyon institutions. These activities demonstrate CR’s capacity to engage across institutions and highlight the unique advantages of the Lyon environment. The MSCA fellowship will enable CR to deepen these collaborations, access joint seminars, and benefit from the broader infrastructure available through inter-institutional networks. This strong local ecosystem will amplify the project’s impact and provide CR with sustained integration into the French and European mathematical physics community.}
+
+\textcolor{blue}{[Additional quantitative details about the size, staffing, and facilities of ICJ, as required by the template, will be included in Part B-2 Section 5 (“Capacity of the Participating Organisations”).]}
+
+
+%----------------------------------------------------------------------------------%
+\mscatagend{CON-SOR-CS} \mscatagend{PRJ-MGT-PM} \mscatagend{QUA-LIT-QL} \mscatagend{WRK-PLA-WP}
+
+
+
+
+
+
+
+%#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#%
+% Bibliography (BibTex)
+% https://arxiv.org/hypertex/bibstyles/
+%#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#%
+\footnotesize
+\bibliographystyle{savetrees}
+\bibliography{./biblio,./publications}
+%\input{build/Research-Proposal-Online.bbl}
+
+
+
+%==================================================================================%
+\end{document}
+
+% kate: default-dictionary en_GB;

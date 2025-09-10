@@ -1,0 +1,115 @@
+\documentclass[11pt]{article}
+
+\usepackage[a4paper,margin=1in]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{microtype}
+\usepackage{mathtools,amssymb,amsthm}
+\usepackage[authoryear]{natbib}
+\usepackage{hyperref}
+\hypersetup{colorlinks=true,linkcolor=blue,citecolor=blue,urlcolor=blue}
+
+% Theorem environments
+\newtheorem{definition}{Definition}
+\newtheorem{proposition}{Proposition}
+\newtheorem{remark}{Remark}
+\newtheorem{example}{Example}
+
+% Notation
+\newcommand{\Bis}{\mathrm{Bis}}
+\newcommand{\Diff}{\mathrm{Diff}}
+\newcommand{\Spin}{\mathrm{Spin}}
+\newcommand{\GL}{\mathrm{GL}}
+\newcommand{\SO}{\mathrm{SO}}
+\newcommand{\OO}{\mathrm{O}}
+\newcommand{\id}{\mathrm{id}}
+\newcommand{\JJ}{\mathrm{J}}
+
+\title{The Poincar\'e Groupoid and Covariance in Curved Spacetime}
+\author{Ale \& Tony}
+\date{ }
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+We outline a research program that promotes the orthonormal frame groupoid of a Lorentzian manifold $(M,g)$ to the role of a \emph{Poincar\'e groupoid}, i.e.\ the local curved-spacetime analogue of the Poincar\'e group of Minkowski space. Building on \citep{CostaA2015,CostaB2018}, we review the interplay among pair, frame, jet and gauge groupoids; the structure of bisections and their relation to base diffeomorphisms; holonomicity with respect to jet prolongations; and the groupoid formulation of invariance, momentum maps and Noether-type results. We emphasize the scalar-field example and its stress--energy tensor \citep[Eq.~(158)]{CostaA2015}. We conclude with directions toward gauge fields as \emph{groupoid} connections, spinorial extensions via a Spin groupoid, and a multisymplectic homotopy (co)momentum map for higher groupoid actions.
+\end{abstract}
+
+\section{From Lie groups to Lie groupoids}
+A \emph{Lie groupoid} $G\rightrightarrows M$ consists of a manifold of arrows $G$ and a manifold of objects $M$, with smooth source and target submersions $s,t:G\to M$, a smooth partially defined multiplication $m:G^{(2)}\to G$, a unit $u:M\to G$, and inversion $i:G\to G$, satisfying the usual axioms \citep[Def.~\S{}Definition and basic concepts]{WikipediaLieGroupoid}. One writes $G\rightrightarrows M$ to stress that $s$ and $t$ project to $M$. Lie groupoids generalize Lie groups (the case of a single object) and provide a natural language for \emph{local} or point-dependent symmetries \citep{WikipediaLieGroupoid}.
+
+\paragraph{Basic examples.}
+(i) The \emph{pair groupoid} $M\times M\rightrightarrows M$ has arrows $(x,y)$ with $s(x,y)=x$ and $t(x,y)=y$. Its bisections identify with $\Diff(M)$ by $x\mapsto (x,\varphi(x))$. 
+(ii) The \emph{frame groupoid} $\GL(TM)\rightrightarrows M$ has arrows the linear isomorphisms $T_xM\to T_yM$. 
+(iii) If $P\to M$ is a principal $H$-bundle, the \emph{gauge groupoid} $\mathcal{G}(P)\rightrightarrows M$ has arrows the classes $[p,q]$ with $p\in P_x$, $q\in P_y$ modulo the diagonal $H$-action; composition is $[p,q]\circ [q,r]=[p,r]$; $\mathcal{G}(P)$ is transitive with isotropy $H$ \citep[\S{}Transitive groupoids]{WikipediaLieGroupoid}, see also \citep{nlabGaugeGroup}.
+
+\paragraph{Jet groupoids.}
+For any Lie groupoid $G$, its first jet prolongation $\JJ^1G$ is a Lie groupoid encoding first-order data of $G$-bisections. In particular, \emph{Example~3} of \citet{CostaA2015} shows a canonical isomorphism
+\begin{equation}
+  \GL(TM)\;\cong\;\JJ^1(M\times M),
+  \label{eq:GLisJ1Pair}
+\end{equation}
+identifying the frame groupoid with the 1-jet groupoid of the pair groupoid \citep[Ex.~3]{CostaA2015}. This realizes an arrow $T_xM\!\to\! T_yM$ as the first jet of a local diffeomorphism sending $x$ to $y$.
+
+\section{The Poincar\'e groupoid}
+On a Lorentzian manifold $(M,g)$, the \emph{orthonormal frame groupoid} $O(TM,g)\rightrightarrows M$ consists of linear isometries $(T_xM,g_x)\to (T_yM,g_y)$. As a Lie subgroupoid of $\GL(TM)$, it is the gauge groupoid of the $\OO(1,n\!-\!1)$-principal frame bundle and will be called the \emph{Poincar\'e groupoid} of $(M,g)$. In Minkowski space this recovers the local counterpart of the global Poincar\'e symmetry.
+
+\paragraph{Bisections and base diffeomorphisms.}
+The group $\Bis(G)$ of bisections of any Lie groupoid $G\rightrightarrows M$ carries a natural homomorphism
+\begin{equation}
+  \Phi:\ \Bis(G)\longrightarrow \Diff(M),\qquad \beta\longmapsto\bigl(x\mapsto t(\beta(x))\bigr),
+  \label{eq:PhiBisToDiff}
+\end{equation}
+whose kernel consists of isotropy-valued bisections. In \citet[Eq.~(42)--(43), p.~12]{CostaA2015}, $\Phi$ is used to organize the exact sequence
+\[
+  1\longrightarrow \Bis(G_{\mathrm{iso}})\longrightarrow \Bis(G)\xrightarrow{\ \Phi\ }\Diff^G(M)\longrightarrow 1,
+\]
+where $\Diff^G(M)$ is the subgroup of diffeomorphisms induced by $G$-bisections. If $G$ is \emph{regular} (its orbits form a regular foliation), $\Phi$ is a submersion onto $\Diff^G(M)$; when $G$ is a gauge groupoid, the anchor of its Lie algebroid is surjective (transitive case) so $\Phi$ is also onto and, on appropriate subgroups, can be an inclusion \citep[\S4--\S5]{CostaA2015}. The Poincar\'e groupoid $O(TM,g)$ is of this type (transitive gauge groupoid).
+
+\paragraph{Holonomicity and jets.}
+Since $\GL(TM)\cong \JJ^1(M\times M)$ \eqref{eq:GLisJ1Pair}, the question whether a bisection of $O(TM,g)$ is \emph{holonomous} (i.e.\ arises as a 1-jet of a lower-level bisection) is meaningful. \citet[\S3.2, Ex.~4]{CostaA2015} show that the group of holonomous bisections of $O(TM,g)$ identifies with the \emph{isometry group} of $(M,g)$; in general curved spacetimes, $O(TM,g)$ is not holonomous (only in maximally symmetric cases do local frame symmetries integrate to global isometries).
+
+\section{Groupoid actions, canonical forms and Noether}
+Let $G\rightrightarrows M$ act on a field bundle $E\to M$ in the sense of \citep[\S4]{CostaA2015}. On (extended) multiphase spaces, there are canonical forms $\,\theta\,$ and $\,\omega=-d\theta\,$ of degrees $n$ and $n\!+\!1$. 
+
+\paragraph{Invariance of canonical forms.}
+\citet[Thm.~1, \S4]{CostaA2015} prove: the $n$-form $\theta$ is invariant under the action of the \emph{semiholonomous} second jet groupoid $\bar{\JJ}^2G$, and the $(n\!+\!1)$-form $\omega$ is invariant under the (holonomous) second jet groupoid $\JJ^2G$. If $\tilde G\subset \JJ G$ is a \emph{full} symmetry subgroupoid (projection to $G$ is a surjective submersion onto a wide subgroupoid), then the induced Lagrangian/Hamiltonian forms are $\tilde G$-holonomously invariant \citep[Thm.~2, p.~32]{CostaA2015}.
+
+\paragraph{Momentum maps and Noether.}
+In \citet[\S5]{CostaA2015} the momentum map is generalized to groupoid actions: there is an \emph{extended} momentum map $J^{\mathrm{ext}}$ on sections of the jet algebroid and an \emph{ordinary} momentum map $J$ on sections of the Lie algebroid, taking values in $(n\!-\!1)$-forms on (extended) multiphase space. The Noether-type statement (\citealt[Thm.~3]{CostaA2015}) asserts that for any horizontal infinitesimal symmetry $X$ (compatible with the chosen full subgroupoid $\tilde G$) and any on-shell field $\phi$, the pulled-back current $j_X^\phi=\phi^\ast J(X)$ is closed:
+\begin{equation}
+  d\,j_X^\phi \;=\; 0\qquad\text{(on solutions).}
+\end{equation}
+In the purely internal-gauge setting, Part~II develops minimal coupling and derives Utiyama's theorem in the groupoid language \citep{CostaB2018}.
+
+\section{Scalar field example and the stress--energy tensor}
+For a real scalar field $\varphi:M\to\mathbb{R}$ with Lagrangian density
+\begin{equation}
+  L(\varphi,\partial\varphi)\;=\;\tfrac12\,g^{\mu\nu}\,\partial_\mu\varphi\,\partial_\nu\varphi\;-\;V(\varphi),
+\end{equation}
+invariance under the Poincar\'e groupoid $O(TM,g)$ yields the usual stress--energy tensor \citep[Eq.~(158), \S6]{CostaA2015}:
+\begin{equation}
+  T_{\mu\nu}\;=\;\partial_\mu\varphi\,\partial_\nu\varphi\;-\;g_{\mu\nu}\,L,
+\end{equation}
+whose covariant divergence vanishes on-shell. This recovers the standard energy--momentum conservation as a corollary of groupoid Noether symmetry in the curved setting.
+
+\section{Outlook: gauge, spin and higher symmetries}
+\paragraph{Gauge fields as groupoid connections.}
+Beyond the Lie \emph{algebroid} picture (Atiyah sequence), a long-term goal is to treat classical gauge fields as \emph{connections on Lie groupoids} (global objects), in the spirit of ``direct connections on groupoids and their jet prolongations'' \citep{Paycha2022}. This would bring global topological data directly into the Noether framework and clarify curvature/holonomy at the groupoid level.
+
+\paragraph{Spin groupoid and fermions.}
+On spin manifolds, lifting $O(TM,g)$ to a \emph{Spin} gauge groupoid $\Spin(TM,g)$ (double cover in the groupoid sense) should permit Dirac spinor fields as associated representations, thus implementing the universal spin lift of flat-space Poincar\'e symmetry in curved spacetime at the groupoid level.
+
+\paragraph{Multisymplectic homotopy (co)momentum maps.}
+Extending \citep[\S5--\S6]{CostaA2015} to higher (multi-)symplectic degrees suggests momentum maps valued in towers of differential forms, governed by $L_\infty$-algebraic symmetry and higher groupoids. A homotopy \emph{co}momentum map for Hamiltonian groupoid actions would systematize higher Noether currents in covariant field theory.
+
+\paragraph{Open problems.}
+Among the questions emphasized in \citep{CostaA2015,CostaB2018}: (i) refining the relation between groupoid currents and standard tensorial currents (stress--energy, spin) in general theories; (ii) systematic treatment of full subgroupoids and holonomicity versus integrability constraints; (iii) the precise functorial status of minimal coupling within jet groupoid actions; (iv) an explicit groupoid-level theory of connections curving to higher jets (see \citealp{Paycha2022}).
+
+\bigskip
+\noindent\textbf{Acknowledgements.} Standard references on Lie groupoids and algebroids include \citep{WikipediaLieGroupoid}; for physics-oriented entries on gauge groups, see \citep{nlabGaugeGroup}.
+
+\bibliographystyle{alpha}
+\bibliography{refs}
+\end{document}

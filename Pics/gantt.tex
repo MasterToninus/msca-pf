@@ -1,0 +1,60 @@
+\documentclass[tikz, margin=5mm]{standalone}
+\usepackage{pgfgantt}
+\usepackage{xcolor}
+
+% Spacer invisibile tra righe del chart
+\newcommand{\ganttspacer}[1][0.08]{%
+  \ganttbar[
+    bar/.append style={draw=none, fill=none},
+    bar height=#1,
+    bar label node/.append style={text width=0pt, inner sep=0pt}
+  ]{}{1}{1} \\
+}
+
+\begin{document}
+
+\begin{ganttchart}[
+   vgrid={*{11}{gray, dotted}, *1{black, dashed}},
+   x unit=0.45cm,
+   y unit chart=0.35cm,
+   y unit title=0.6cm,
+   bar height=0.5,
+   bar label font=\scriptsize,
+   group label font=\scriptsize\bfseries,
+   milestone label font=\scriptsize,
+   bar label node/.append style={text width=5.2cm, align=left},
+   group label node/.append style={text width=5.2cm, align=left}
+]{1}{24}
+
+  \gantttitle{Year 1}{12} \gantttitle{Year 2}{12} \\
+  \gantttitlelist{1,...,12}{1} \gantttitlelist{13,...,24}{1} \\
+
+  % ===== WP1 =====
+  \ganttgroup[group/.append style={fill=purple!40}]{WP1 – Poincaré Groupoid}{1}{12} \\
+  \ganttbar[bar/.append style={fill=purple!15}]{T1.1: Frame grpds, jets, $O(TM,g)$}{1}{6} \\
+  \ganttbar[bar/.append style={fill=purple!15}]{T1.2: Spin ext., bundles, sym. compat.}{4}{12} \\
+  \ganttbar[bar/.append style={fill=purple!60}, bar height=0.3]{M1: Framework validated}{6}{6} \\
+  \ganttbar[bar/.append style={fill=purple!60}, bar height=0.3]{D1: Preprint WP1}{12}{12} \\
+
+  \ganttspacer
+
+  % ===== WP2 =====
+  \ganttgroup[group/.append style={fill=green!40}]{WP2 – Gauge Gravity}{7}{20} \\
+  \ganttbar[bar/.append style={fill=green!15}]{T2.1: Conn., curv., torsion}{7}{12} \\
+  \ganttbar[bar/.append style={fill=green!15}]{T2.2: Tetrad+spin conn.}{10}{18} \\
+  \ganttbar[bar/.append style={fill=green!15}]{T2.3: Limits \& toy models}{14}{20} \\
+  \ganttbar[bar/.append style={fill=green!60}, bar height=0.3]{M2: Consistency checks}{18}{18} \\
+  \ganttbar[bar/.append style={fill=green!60}, bar height=0.3]{D2: Preprint WP2}{22}{22} \\
+
+  \ganttspacer
+
+  % ===== WP3 =====
+  \ganttgroup[group/.append style={fill=orange!50}]{WP3 – Multilocal Obs.}{15}{24} \\
+  \ganttbar[bar/.append style={fill=orange!25}]{T3.1: Multilocal $L_\infty$ alg.}{15}{20} \\
+  \ganttbar[bar/.append style={fill=orange!25}]{T3.2: Homotopy cmm maps}{19}{24} \\
+  \ganttbar[bar/.append style={fill=orange!70}, bar height=0.3]{M3: Prototype ready}{20}{20} \\
+  \ganttbar[bar/.append style={fill=orange!70}, bar height=0.3]{D3: Preprint+Repo}{24}{24}
+
+\end{ganttchart}
+
+\end{document}
